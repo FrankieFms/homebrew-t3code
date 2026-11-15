@@ -6,12 +6,11 @@ A T3 Code theme inspired by the channel menu of The Homebrew Channel on the Nint
 
 | File | What it is |
 | --- | --- |
-| `homebrew-channel-colors.json` | The colors-only theme. Light mode is the main look: a pale icy blue background, white panels and Wii-blue accents. Dark mode is a deep navy version. |
+| `homebrew-channel-colors.json` | The colors-only theme: a dark, deep navy look with Wii-blue accents. |
 | `hbc-bubbles.css` | A pure-CSS version of the rising background bubbles. T3 Code themes cannot load CSS yet, so this file is not used by the theme. |
 
 ## Requirements
 
-- T3 Code **Nightly**. Custom themes (`t3 theme`) are not in the stable release yet.
 - The `t3` CLI. T3 Code installs it at `~/.t3/bin/t3` (`t3.cmd` on Windows).
 
 Check that your build supports themes:
@@ -56,10 +55,9 @@ You can also copy `homebrew-channel-colors.json` into `~/.t3/userdata/themes/`
 yourself. T3 Code watches that folder and lists the theme. Then pick it in
 T3 Code, or run `t3 theme set homebrew-channel-colors`.
 
-## Light and dark mode
+## Appearance
 
-The file sets `"appearance": "light"`. The dark palette is under `variants.dark`.
-T3 Code picks the variant that matches your appearance setting.
+The theme is dark only. The file sets `"appearance": "dark"`.
 
 ## Update after editing
 
