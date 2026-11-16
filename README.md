@@ -13,10 +13,15 @@ All themes are in the `themes/` folder.
 | `homebrew-channel-no-bg.json` | `homebrew-channel-no-bg` | Backup of the main theme with no background image. Dark mode uses a navy gradient. |
 | `homebrew-channel-pink.json` | `homebrew-channel-pink` | Dark only. Light pink water, pink bubbles and accents. |
 | `homebrew-channel-red.json` | `homebrew-channel-red` | Dark only. Red water, red bubbles and accents. |
+| `homebrew-channel-yellow.json` | `homebrew-channel-yellow` | Dark only. Lime-yellow water, bubbles and accents. |
+| `homebrew-channel-green.json` | `homebrew-channel-green` | Dark only. Green water, bubbles and accents. |
+| `homebrew-channel-purple.json` | `homebrew-channel-purple` | Dark only. Purple water, bubbles and accents. |
+| `homebrew-channel-orange.json` | `homebrew-channel-orange` | Dark only. Orange water, bubbles and accents. |
+| `homebrew-channel-grey.json` | `homebrew-channel-grey` | Dark only. Charcoal water, grey bubbles and white accents. |
 
-`homebrew-channel-colors.json`, in the repository root, is a colors-only version with no CSS: a dark, deep navy look with Wii-blue accents.
+`themes/homebrew-channel-colors.json` is a colors-only version with no CSS: a dark, deep navy look with Wii-blue accents.
 
-Set T3 Code to dark mode for the pink and red themes. They have no light palette.
+Set T3 Code to dark mode for the color variations. They have no light palette.
 
 ## Requirements
 
@@ -66,28 +71,38 @@ or run `t3 theme set <theme id>`.
 
 ## Customize
 
-| File | What it is |
-| --- | --- |
-| `hbc-bubbles.css` | A pure-CSS version of the rising background bubbles. |
-| `hbc-theme.css` | The Homebrew Channel styling for T3 Code's layout. |
-| `build-theme.py` | Holds the palettes and the list of themes. Merges them with the CSS and backgrounds into `themes/`. |
-| `make-backgrounds.py` | Makes the recolored, compressed WebP backgrounds in `assets/`. Needs Pillow. |
-| `assets/` | The original Homebrew Channel backgrounds and the WebP copies the themes embed. |
+```
+themes/              Ready-to-use theme files. Built by scripts/build-theme.py,
+                     except homebrew-channel-colors.json, which is edited by hand.
+src/
+  hbc-bubbles.css    A pure-CSS version of the rising background bubbles.
+  hbc-theme.css      The Homebrew Channel styling for T3 Code's layout.
+scripts/
+  build-theme.py     Holds the palettes and the list of themes. Merges them with
+                     the CSS and backgrounds into themes/.
+  make-backgrounds.py  Makes the recolored WebP backgrounds. Needs Pillow.
+assets/
+  source/            The original Homebrew Channel backgrounds.
+  generated/         The compressed WebP backgrounds the themes embed.
+```
+
+The dark palette of the main theme comes from `themes/homebrew-channel-colors.json`.
+The pink and red palettes are tinted from it.
 
 After editing a CSS file or a palette, rebuild the themes and apply one:
 
 ```sh
-python build-theme.py
+python scripts/build-theme.py
 t3 theme set ./themes/homebrew-channel.json
 ```
 
-To add a color variation, add a background entry in `make-backgrounds.py`
-and a theme entry in `THEMES` in `build-theme.py`. Then run both scripts:
+To add a color variation, add a background entry in `scripts/make-backgrounds.py`
+and a theme entry in `THEMES` in `scripts/build-theme.py`. Then run both scripts:
 
 ```sh
 pip install pillow
-python make-backgrounds.py
-python build-theme.py
+python scripts/make-backgrounds.py
+python scripts/build-theme.py
 ```
 
 Each theme's CSS can be at most 50,000 characters. The build script stops if one is longer.
