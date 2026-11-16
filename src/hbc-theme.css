@@ -49,12 +49,8 @@ body,
   background: transparent !important;
 }
 
-/* Clear every layer between the root and the chat so the bubbles show through.
-   The composer and header rules cover the new-thread screen, which has no
-   conversation area. */
+/* Clear every layer between the root and the chat so the bubbles show through. */
 body *:has([data-workspace-area="conversation"]),
-body *:has([data-chat-composer-form]),
-body *:has([data-chat-header]),
 [data-workspace-area="conversation"],
 .messages-timeline-scroll,
 [data-chat-header] {
@@ -78,7 +74,6 @@ body *:has([data-chat-header]),
 
 [data-user-message-bubble],
 [data-slot="composer-host"],
-[data-thread-details-card],
 .chat-markdown-codeblock {
   background: var(--hbc-glass-strong) !important;
   border: 2px solid var(--hbc-tile-border) !important;
@@ -111,14 +106,9 @@ body *:has([data-chat-header]),
   color: var(--hbc-accent) !important;
 }
 
-/* ---------- Popups ---------- */
-
-[data-slot="dialog-popup"],
-[data-slot="popover-popup"],
-[data-slot="menu-popup"] {
-  border-radius: var(--hbc-radius) !important;
-  border: 2px solid var(--hbc-tile-border) !important;
-}
+/* Popups keep T3 Code's own frosted glass and faint outline. The popup
+   slots are often invisible wrappers, so a border on them draws a second
+   frame around the real one. */
 
 /* ---------- Buttons: rounded like the HBC bottom bar ---------- */
 

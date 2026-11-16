@@ -28,14 +28,24 @@ VARIATIONS = {
     "background_wide_purple.webp": {"hue": 260, "saturation": 1.0, "value": 1.0},
     "background_wide_orange.webp": {"hue": 27, "saturation": 1.0, "value": 0.85},
     "background_wide_grey.webp": {"hue": 199, "saturation": 0.0, "value": 0.45},
+    "background_wide_teal.webp": {"hue": 172, "saturation": 1.0, "value": 0.85},
+    "background_wide_gold.webp": {"hue": 45, "saturation": 1.0, "value": 0.75},
+    "background_wide_magenta.webp": {"hue": 300, "saturation": 1.0, "value": 0.9},
+    "background_wide_indigo.webp": {"hue": 235, "saturation": 1.0, "value": 1.0},
+    # Rainbow: the hue sweeps across the spectrum from left to right.
+    "background_wide_rainbow.webp": {"hue": "rainbow", "saturation": 1.0, "value": 0.8},
 }
 SOURCE_HUE = 199
 
 
-def recolor(image: Image.Image, hue: float, saturation: float, value: float) -> Image.Image:
-    shift = round((hue - SOURCE_HUE) % 360 * 255 / 360)
+def recolor(image: Image.Image, hue: float | str, saturation: float, value: float) -> Image.Image:
     h, s, v = image.convert("HSV").split()
-    h = h.point(lambda x: (x + shift) % 256)
+    if hue == "rainbow":
+        # A left-to-right gradient of every hue replaces the water's hue.
+        h = Image.linear_gradient("L").rotate(90).resize(image.size)
+    else:
+        shift = round((hue - SOURCE_HUE) % 360 * 255 / 360)
+        h = h.point(lambda x: (x + shift) % 256)
     s = s.point(lambda x: min(255, round(x * saturation)))
     v = v.point(lambda x: min(255, round(x * value)))
     return Image.merge("HSV", (h, s, v)).convert("RGB")

@@ -18,6 +18,10 @@ All themes are in the `themes/` folder.
 | `homebrew-channel-purple.json` | `homebrew-channel-purple` | Dark only. Purple water, bubbles and accents. |
 | `homebrew-channel-orange.json` | `homebrew-channel-orange` | Dark only. Orange water, bubbles and accents. |
 | `homebrew-channel-grey.json` | `homebrew-channel-grey` | Dark only. Charcoal water, grey bubbles and white accents. |
+| `homebrew-channel-teal.json` | `homebrew-channel-teal` | Dark only. Teal water, bubbles and accents. |
+| `homebrew-channel-gold.json` | `homebrew-channel-gold` | Dark only. Gold water, bubbles and accents. |
+| `homebrew-channel-magenta.json` | `homebrew-channel-magenta` | Dark only. Magenta water, bubbles and accents. |
+| `homebrew-channel-indigo.json` | `homebrew-channel-indigo` | Dark only. Indigo water, bubbles and accents. |
 
 `themes/homebrew-channel-colors.json` is a colors-only version with no CSS: a dark, deep navy look with Wii-blue accents.
 
@@ -81,6 +85,8 @@ scripts/
   build-theme.py     Holds the palettes and the list of themes. Merges them with
                      the CSS and backgrounds into themes/.
   make-backgrounds.py  Makes the recolored WebP backgrounds. Needs Pillow.
+archive/             Unreleased experiments, such as the rainbow theme.
+                     Built by scripts/build-theme.py. Not supported.
 assets/
   source/            The original Homebrew Channel backgrounds.
   generated/         The compressed WebP backgrounds the themes embed.
