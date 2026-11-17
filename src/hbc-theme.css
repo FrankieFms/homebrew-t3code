@@ -149,11 +149,18 @@ body *:has([data-workspace-area="conversation"]),
   --hbc-bar-outline: rgb(0 0 0 / 0.72);
   --hbc-bar-shadow: 0 1px 3px rgb(0 0 0 / 0.4);
   --hbc-bar-radius: 6px;
+  /* The chat box and dialogs: rounder than a bar, tighter than a tile. */
+  --hbc-panel-radius: 10px;
   --hbc-panel: linear-gradient(180deg,
     var(--hbc-p1), var(--hbc-p2) 35%, #000 60%, var(--hbc-p2) 85%, var(--hbc-p3));
 }
 
-/* Thread rows: a black bar on hover, the steel-blue bar when open. */
+/* Thread rows: a black bar on hover, the steel-blue bar when open.
+   T3 Code draws its keyboard focus ring as a box-shadow from Tailwind's
+   ring variables. Each bar box-shadow below starts with those variables, so
+   the bar keeps the app's own ring instead of wiping it out. They must be
+   written out here: a custom property holding them would resolve on the
+   root, where they are empty. */
 .dark [data-thread-item],
 .dark [data-thread-item] [data-sidebar-row] {
   border-radius: var(--hbc-bar-radius) !important;
@@ -161,12 +168,12 @@ body *:has([data-workspace-area="conversation"]),
 
 .dark [data-thread-item] [data-sidebar-row]:hover {
   background: var(--hbc-bar) !important;
-  box-shadow: 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
 }
 
 .dark [data-thread-item] [data-sidebar-row][aria-current="page"] {
   background: var(--hbc-bar-focus-text) !important;
-  box-shadow: 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
 }
 
 /* Muted grey text vanishes on the light top of the steel-blue bar, so every
@@ -191,23 +198,9 @@ body *:has([data-workspace-area="conversation"]),
      a second white shine line along the bottom. */
   background: var(--hbc-bar-focus) border-box !important;
   border-color: transparent !important;
-  box-shadow: 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
   color: #fff !important;
   text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
-}
-
-/* Keyboard focus. The bar rules above replace box-shadow, which also held
-   T3 Code's focus ring, and hover looks the same as focus. An accent
-   outline marks the focused button or thread row instead. Outlines follow
-   the border radius and are kept in Windows high-contrast mode. */
-.dark [data-slot="button"]:focus-visible {
-  outline: 2px solid var(--hbc-accent) !important;
-  outline-offset: 2px;
-}
-
-.dark [data-thread-item]:is(:focus-visible, :has(:focus-visible)) {
-  outline: 2px solid var(--hbc-accent) !important;
-  outline-offset: 1px;
 }
 
 /* The chat box is a black HBC bar. Its 1px outline still turns to the
@@ -216,7 +209,7 @@ body *:has([data-workspace-area="conversation"]),
 .dark [data-slot="composer-host"]:focus-within {
   background: var(--hbc-bar) !important;
   border-color: var(--hbc-bar-outline) !important;
-  border-radius: 10px !important;
+  border-radius: var(--hbc-panel-radius) !important;
   box-shadow: var(--hbc-bar-shadow) !important;
 }
 
@@ -241,7 +234,7 @@ body *:has([data-workspace-area="conversation"]),
 .dark [data-thread-details-card] {
   background: var(--hbc-panel) !important;
   border: 3px solid #000 !important;
-  border-radius: 10px !important;
+  border-radius: var(--hbc-panel-radius) !important;
 }
 
 /* ---------- Caret and text selection ---------- */
