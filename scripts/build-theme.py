@@ -11,78 +11,16 @@ after editing a CSS file or a palette, then apply a theme:
 import base64
 import colorsys
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "themes"
-CSS_FILES = [ROOT / "src" / "hbc-bubbles.css", ROOT / "src" / "hbc-theme.css"]
+# hbc-bubbles-fast.css is the GPU-friendly bubbles; hbc-bubbles.css is the
+# original per-bubble sway, kept for switching back.
+CSS_FILES = [ROOT / "src" / "hbc-bubbles-fast.css", ROOT / "src" / "hbc-theme.css"]
 BACKGROUNDS = ROOT / "assets" / "generated"
 CSS_MAX_LENGTH = 50_000
-
-# Light: the Homebrew Channel menu. White tiles, grey-blue chrome, Wii blue.
-LIGHT = {
-    "canvas": "#f1f5f8",
-    "chrome": "#e6edf3",
-    "toolbar": "#e6edf3",
-    "toolbarForeground": "#2b3640",
-    "toolbarBorder": "#ccd9e3",
-    "toolbarControl": "#ffffff",
-    "toolbarControlForeground": "#2b3640",
-    "toolbarControlHover": "#dcebf5",
-    "surface": "#ffffff",
-    "surfaceRaised": "#ffffff",
-    "surfaceOverlay": "#ffffff",
-    "text": "#2b3640",
-    "textMuted": "#5f6f7d",
-    "border": "#c9d6e1",
-    "input": "#ffffff",
-    "focus": "#34beed",
-    "accent": "#0b7fbd",
-    "accentForeground": "#ffffff",
-    "secondary": "#e3eef6",
-    "secondaryForeground": "#2b3640",
-    "muted": "#e9f0f5",
-    "mutedForeground": "#5f6f7d",
-    "placeholder": "#7d8c99",
-    "secondaryLabel": "#5f6f7d",
-    "iconMuted": "#7d8c99",
-    "error": "#d93a3a",
-    "errorForeground": "#b42323",
-    "errorSurface": "#fde8e8",
-    "warning": "#e08a00",
-    "warningForeground": "#9a5d00",
-    "warningSurface": "#fff3dc",
-    "update": "#0b7fbd",
-    "updateForeground": "#0a6ea4",
-    "updateSurface": "#ddf0fb",
-    "accentSurface": "#dcf0fb",
-    "accentSurfaceForeground": "#1f4a63",
-    "messageSurface": "#ffffff",
-    "messageForeground": "#2b3640",
-    "messageAction": "#0b7fbd",
-    "messageActionForeground": "#ffffff",
-    "messageActionHover": "#096da3",
-    "codeBackground": "#f3f7fa",
-    "codeForeground": "#2b3640",
-    "sidebar": "#e2ebf2",
-    "sidebarForeground": "#2b3640",
-    "sidebarMutedForeground": "#5f6f7d",
-    "sidebarControlSurface": "#ffffff",
-    "sidebarRowHover": "#d5e5f0",
-    "sidebarRowActive": "#c6e3f5",
-    "sidebarRowSelected": "#d0e8f7",
-    "sidebarBorder": "#ccd9e3",
-    "searchMatchBackground": "#bfe6f8",
-    "searchMatchForeground": "#1f2a33",
-    "searchMatchActiveBackground": "#34beed",
-    "searchMatchActiveForeground": "#06202e",
-    "terminalBackground": "#f7fafc",
-    "terminalForeground": "#2b3640",
-    "terminalCursor": "#0b7fbd",
-    "terminalSelection": "#bfe3f5",
-    "terminalScrollbar": "#c9d6e1",
-    "terminalScrollbarHover": "#a9bccb",
-}
 
 # Dark: the same palette as the colors-only theme.
 DARK = json.loads((OUTPUT_DIR / "homebrew-channel-colors.json").read_text("utf-8"))["colors"]
@@ -157,7 +95,23 @@ def tinted_glass(hue: float, saturation: float = 1.0) -> str:
     return glass(rgb["glass"], rgb["strong"], colors["border"])
 
 
-def variation(id_: str, name: str, palette: dict, accent: str, bubbles: str, hue: float,
+# The steel-blue focus bar and teal dialog stops from the HBC art
+# (see the "Homebrew Channel art" section of src/hbc-theme.css).
+HBC_ART_STOPS = {
+    "f1": "#fbfcfd", "f2": "#c2d7e1", "f3": "#82aec4", "f4": "#57879f",
+    "f5": "#184860", "f6": "#416e85", "f7": "#698ea1",
+    "p1": "#173645", "p2": "#0a181e", "p3": "#10252f",
+}
+
+
+def art_stops(hue: float, saturation: float = 1.0) -> str:
+    """The HBC focus bar and dialog stops, moved to one hue."""
+    stops = tint(HBC_ART_STOPS, hue, saturation)
+    lines = "".join(f"  --hbc-{k}: {v};\n" for k, v in stops.items())
+    return f":root {{\n{lines}}}"
+
+
+def variation(id_: str, name: str, palette: dict, accent: str, hue: float,
               saturation: float = 1.0) -> dict:
     """A dark-only color variation with its own background and tinted bubbles."""
     return {
@@ -166,8 +120,11 @@ def variation(id_: str, name: str, palette: dict, accent: str, bubbles: str, hue
         "appearance": "dark",
         "dark": palette,
         "background": f"background_wide_{id_}.webp",
-        "css": f":root {{\n  --hbc-accent: {accent};\n  --hbc-bubble-filter: {bubbles};\n}}\n\n"
-        + tinted_glass(hue, saturation),
+        "bubbles": id_,
+        "css": f":root {{\n  --hbc-accent: {accent};\n}}\n\n"
+        + tinted_glass(hue, saturation)
+        + "\n\n"
+        + art_stops(hue, saturation),
     }
 
 
@@ -175,8 +132,7 @@ THEMES = [
     {
         "id": "homebrew-channel",
         "name": "Homebrew Channel",
-        "appearance": "light",
-        "light": LIGHT,
+        "appearance": "dark",
         "dark": DARK,
         "background": "background_wide.webp",
     },
@@ -184,8 +140,7 @@ THEMES = [
         # Backup: the navy gradient from before the background image.
         "id": "homebrew-channel-no-bg",
         "name": "Homebrew Channel (No Background)",
-        "appearance": "light",
-        "light": LIGHT,
+        "appearance": "dark",
         "dark": DARK,
         "background": None,
         "css": f".dark {{\n  --hbc-backdrop: {NAVY_BACKDROP};\n}}",
@@ -196,8 +151,11 @@ THEMES = [
         "appearance": "dark",
         "dark": PINK,
         "background": "background_wide_pink.webp",
-        "css": ":root {\n  --hbc-accent: #ff9ecf;\n  --hbc-bubble-filter: hue-rotate(130deg) saturate(0.8);\n}\n\n"
-        + glass("36, 13, 26", "52, 19, 38", "#5a2442"),
+        "bubbles": "pink",
+        "css": ":root {\n  --hbc-accent: #ff9ecf;\n}\n\n"
+        + glass("36, 13, 26", "52, 19, 38", "#5a2442")
+        + "\n\n"
+        + art_stops(330, 0.8),
     },
     {
         "id": "homebrew-channel-red",
@@ -205,19 +163,22 @@ THEMES = [
         "appearance": "dark",
         "dark": RED,
         "background": "background_wide_red.webp",
-        "css": ":root {\n  --hbc-accent: #ff4d5a;\n  --hbc-bubble-filter: hue-rotate(157deg);\n}\n\n"
-        + glass("36, 10, 12", "50, 14, 18", "#5a2026"),
+        "bubbles": "red",
+        "css": ":root {\n  --hbc-accent: #ff4d5a;\n}\n\n"
+        + glass("36, 10, 12", "50, 14, 18", "#5a2026")
+        + "\n\n"
+        + art_stops(356),
     },
-    # Bubble art is hue 199; hue-rotate moves it to each channel color.
-    variation("yellow", "Yellow", YELLOW, "#d4e600", "hue-rotate(225deg)", 64),
-    variation("green", "Green", GREEN, "#2ed82b", "hue-rotate(281deg)", 120),
-    variation("purple", "Purple", PURPLE, "#9b6dff", "hue-rotate(61deg)", 260),
-    variation("orange", "Orange", ORANGE, "#f4790f", "hue-rotate(188deg)", 27),
-    variation("grey", "Grey", GREY, "#e6e6e6", "grayscale(1)", 0, 0.0),
-    variation("teal", "Teal", TEAL, "#2ee6c8", "hue-rotate(333deg)", 172),
-    variation("gold", "Gold", GOLD, "#ffc233", "hue-rotate(206deg)", 45),
-    variation("magenta", "Magenta", MAGENTA, "#e55cff", "hue-rotate(101deg)", 300),
-    variation("indigo", "Indigo", INDIGO, "#6d7dff", "hue-rotate(36deg)", 235),
+    # Bubbles come pre-tinted from make-backgrounds.py (assets/generated/bubbles).
+    variation("yellow", "Yellow", YELLOW, "#d4e600", 64),
+    variation("green", "Green", GREEN, "#2ed82b", 120),
+    variation("purple", "Purple", PURPLE, "#9b6dff", 260),
+    variation("orange", "Orange", ORANGE, "#f4790f", 27),
+    variation("grey", "Grey", GREY, "#e6e6e6", 0, 0.0),
+    variation("teal", "Teal", TEAL, "#2ee6c8", 172),
+    variation("gold", "Gold", GOLD, "#ffc233", 45),
+    variation("magenta", "Magenta", MAGENTA, "#e55cff", 300),
+    variation("indigo", "Indigo", INDIGO, "#6d7dff", 235),
 ]
 
 
@@ -227,18 +188,49 @@ def background_css(name: str) -> str:
     return f':root {{\n  --hbc-background-image: url("data:image/webp;base64,{data}");\n}}'
 
 
+def minify(css: str) -> str:
+    """Strip comments and spacing from the built CSS only.
+
+    The files in src/ keep their comments; only the copy inside each theme
+    is shrunk, to stay under T3 Code's 50,000-character limit. Spaces
+    inside values such as calc(1px - 2px) and descendant selectors stay.
+    """
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s+", " ", css)
+    css = re.sub(r"\s*([{};,>])\s*", r"\1", css)
+    return css.replace(";}", "}").strip()
+
+
+def tinted_bubbles(css: str, theme: str) -> str:
+    """Swap the three embedded bubble images for a variation's tinted copies,
+    made by make-backgrounds.py. This replaces a per-frame CSS hue-rotate
+    filter on the four full-screen bubble layers."""
+    def swap(match: re.Match) -> str:
+        data = (BACKGROUNDS / "bubbles" / f"{theme}-{match.group(1)}.png").read_bytes()
+        encoded = base64.b64encode(data).decode("ascii")
+        return f'--bubble-{match.group(1)}: url("data:image/png;base64,{encoded}")'
+
+    css, count = re.subn(r'--bubble-(\d):\s*url\("data:image/png;base64,[A-Za-z0-9+/=]+"\)', swap, css)
+    if count != 3:
+        raise SystemExit(f"{theme}: expected 3 bubble images in hbc-bubbles.css, found {count}.")
+    return css
+
+
 def build(spec: dict) -> dict:
     parts = []
     if spec["background"]:
         parts.append(background_css(spec["background"]))
-    parts += [path.read_text("utf-8").strip() for path in CSS_FILES]
+    bubbles, theme_css = (path.read_text("utf-8").strip() for path in CSS_FILES)
+    if spec.get("bubbles"):
+        bubbles = tinted_bubbles(bubbles, spec["bubbles"])
+    parts += [bubbles, theme_css]
     if spec.get("css"):
         parts.append(spec["css"])
-    css = "\n\n".join(parts) + "\n"
+    css = minify("\n".join(parts))
     if len(css) > CSS_MAX_LENGTH:
         raise SystemExit(f"{spec['id']}: CSS is {len(css)} characters; T3 Code allows {CSS_MAX_LENGTH}.")
 
-    main_palette = spec["light"] if spec["appearance"] == "light" else spec["dark"]
+    main_palette = spec["dark"]
     theme = {
         "version": 1,
         "name": spec["name"],
@@ -247,8 +239,6 @@ def build(spec: dict) -> dict:
         "accent": main_palette["accent"],
         "colors": main_palette,
     }
-    if spec["appearance"] == "light":
-        theme["variants"] = {"dark": spec["dark"]}
     theme["css"] = css
     return theme
 

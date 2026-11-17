@@ -5,9 +5,9 @@
    ========================================================== */
 
 :root {
-  /* Color variations override these two in build-theme.py. */
+  /* Color variations override this in build-theme.py, which also swaps in
+     pre-tinted bubble images (no CSS filter on the bubble layers). */
   --hbc-accent: #34beed;
-  --hbc-bubble-filter: none;
 
   /* Light: the Homebrew Channel menu, soft white fading to grey-blue. */
   --hbc-backdrop: linear-gradient(180deg, #ffffff 0%, #f1f5f8 55%, #dde6ed 100%);
@@ -16,28 +16,30 @@
   --hbc-tile-border: #c7d3dd;
   --hbc-tile-shadow: 0 2px 6px rgba(40, 70, 95, 0.12);
   --hbc-radius: 14px;
+
+  /* The glossy white rim and top shine of a Homebrew Channel tile. */
+  --hbc-rim: rgba(255, 255, 255, 0.95);
+  --hbc-gloss: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 55%);
 }
 
 .dark {
   /* Dark: the Homebrew Channel underwater background. The image is
      fitted to the window width; its black foot blends into #000 below.
      --hbc-background-image is added by build-theme.py. */
-  --hbc-backdrop: var(--hbc-background-image) center top / 100% auto no-repeat, #000;
+  /* The top of the water is darkened behind the header, fading out below
+     it, so the header's muted text stays above 4.5:1 without a hard edge. */
+  --hbc-backdrop:
+    linear-gradient(rgb(5 20 35 / 0.62) 40px, rgb(5 20 35 / 0) 160px),
+    var(--hbc-background-image) center top / 100% auto no-repeat, #000;
   --hbc-glass: rgba(13, 24, 36, 0.6);
   --hbc-glass-strong: rgba(19, 34, 53, 0.88);
   --hbc-tile-border: #24405a;
   --hbc-tile-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --hbc-rim: rgba(255, 255, 255, 0.55);
+  --hbc-gloss: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 55%);
 }
 
 /* ---------- Backdrop: the gradient sits on the root, bubbles above it ---------- */
-
-/* Tints the blue bubble art for color variations. */
-html::before,
-html::after,
-body::before,
-body::after {
-  filter: var(--hbc-bubble-filter);
-}
 
 html {
   background: var(--hbc-backdrop) fixed !important;
@@ -53,21 +55,61 @@ body,
 body *:has([data-workspace-area="conversation"]),
 [data-workspace-area="conversation"],
 .messages-timeline-scroll,
-[data-chat-header] {
+[data-chat-header],
+[data-timeline-loading] {
   background-color: transparent !important;
   background-image: none !important;
 }
 
 /* ---------- Sidebar: frosted panel ---------- */
 
-[data-slot="sidebar"],
-[data-slot="sidebar-inner"] {
-  background: var(--hbc-glass) !important;
-  backdrop-filter: blur(10px) saturate(1.1);
+/* One glass layer only: stacking it on both slots made the sidebar a flat
+   slab that hid the water. The outer slot stays clear. */
+[data-slot="sidebar"] {
+  background: transparent !important;
 }
 
-[data-thread-item] {
+[data-slot="sidebar-inner"] {
+  background: var(--hbc-glass) !important;
+  /* No backdrop blur: the bubbles move behind the sidebar, so a blur here
+     was recalculated every frame and on every hover. Measured as a large
+     power cost in Task Manager. */
+}
+
+/* The resize edge draws a 2px sidebarBorder line on hover. On the glass that
+   reads as a dark line flickering over the light edge, so it uses the accent.
+   sidebar-rail is not on T3 Code's stable list. */
+[data-slot="sidebar-rail"]:hover::after {
+  background: color-mix(in srgb, var(--hbc-accent) 70%, transparent) !important;
+}
+
+/* The right panel's resize edge: a 1px line inside a separator, matched to
+   the sidebar's 2px accent line. Kept at the user's request although
+   workspace area "panel" and the separator are not on the stable list. */
+[data-workspace-area="panel"] [role="separator"]:is(:hover, :focus-visible, :active) > span {
+  width: 2px !important;
+  background: color-mix(in srgb, var(--hbc-accent) 70%, transparent) !important;
+}
+
+/* [data-thread-item] is the list item; the visible row inside it carries
+   data-sidebar-row and aria-current="page" when its thread is open. */
+[data-thread-item],
+[data-thread-item] [data-sidebar-row] {
   border-radius: 10px !important;
+}
+
+[data-thread-item] [data-sidebar-row]:hover {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hbc-rim) 35%, transparent) !important;
+}
+
+/* The open thread is the selected channel: a glossy white rim inside a
+   glowing ring in the accent color. */
+[data-thread-item] [data-sidebar-row][aria-current="page"] {
+  background: var(--hbc-gloss), var(--hbc-glass-strong) !important;
+  box-shadow:
+    inset 0 0 0 1px var(--hbc-rim),
+    0 0 0 2px color-mix(in srgb, var(--hbc-accent) 75%, transparent),
+    0 2px 12px color-mix(in srgb, var(--hbc-accent) 40%, transparent) !important;
 }
 
 /* ---------- Channel tiles: messages, composer, cards ---------- */
@@ -79,13 +121,23 @@ body *:has([data-workspace-area="conversation"]),
   border: 2px solid var(--hbc-tile-border) !important;
   border-radius: var(--hbc-radius) !important;
   box-shadow: var(--hbc-tile-shadow) !important;
-  backdrop-filter: blur(6px);
+  /* No backdrop blur: these tiles are about 90% opaque, so blur barely
+     shows, yet the moving bubbles behind made it re-blur every frame. */
 }
 
 /* The chat box: a thin outline, as thick as the default theme's,
    that turns to the accent color while you type. */
 [data-slot="composer-host"] {
   border-width: 1px !important;
+}
+
+/* The chat box shines like the Homebrew Channel's bottom bar. */
+[data-slot="composer-host"],
+[data-slot="composer-host"]:focus-within {
+  background: var(--hbc-gloss), var(--hbc-glass-strong) !important;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--hbc-rim) 45%, transparent),
+    var(--hbc-tile-shadow) !important;
 }
 
 [data-slot="composer-host"]:focus-within {
@@ -114,6 +166,123 @@ body *:has([data-workspace-area="conversation"]),
 
 [data-slot="button"] {
   border-radius: 999px !important;
+}
+
+/* ---------- Homebrew Channel art (dark mode) ----------
+   Rebuilt from the HBC image files: glossy black bars with a white shine
+   and a thin black outline; a steel-blue bar for the focused item; a
+   teal-to-black panel with a thick black border for dialogs. The steel-blue
+   and teal stops are --hbc-f* and --hbc-p*, which color variations tint. */
+
+:root {
+  --hbc-f1: #fbfcfd;
+  --hbc-f2: #c2d7e1;
+  --hbc-f3: #82aec4;
+  --hbc-f4: #57879f;
+  --hbc-f5: #184860;
+  --hbc-f6: #416e85;
+  --hbc-f7: #698ea1;
+  --hbc-p1: #173645;
+  --hbc-p2: #0a181e;
+  --hbc-p3: #10252f;
+}
+
+.dark {
+  --hbc-bar: linear-gradient(180deg,
+    rgb(249 249 249 / 0.9) 0 1px, rgb(167 167 167 / 0.9) 1px 2px,
+    rgb(72 72 72 / 0.9) 2px, rgb(43 43 43 / 0.9) 30%, rgb(0 0 0 / 0.9) 70%,
+    rgb(28 28 28 / 0.9) 90%, rgb(71 71 71 / 0.9));
+  --hbc-bar-focus: linear-gradient(180deg,
+    var(--hbc-f1) 0 1px, var(--hbc-f2) 1px 2px, var(--hbc-f3) 2px,
+    var(--hbc-f4) 30%, var(--hbc-f5) 70%, var(--hbc-f6) 90%, var(--hbc-f7));
+  /* The focus bar with a 39% black layer under its shine, so white text
+     on it passes 4.5:1 in every variant. HBC's light top fails otherwise. */
+  --hbc-bar-focus-text:
+    linear-gradient(180deg, var(--hbc-f1) 0 1px, var(--hbc-f2) 1px 2px, transparent 2px),
+    linear-gradient(rgb(0 0 0 / 0.39), rgb(0 0 0 / 0.39)),
+    var(--hbc-bar-focus);
+  --hbc-bar-outline: rgb(0 0 0 / 0.72);
+  --hbc-bar-shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+  --hbc-bar-radius: 6px;
+  --hbc-panel: linear-gradient(180deg,
+    var(--hbc-p1), var(--hbc-p2) 35%, #000 60%, var(--hbc-p2) 85%, var(--hbc-p3));
+}
+
+/* Thread rows: a black bar on hover, the steel-blue bar when open. */
+.dark [data-thread-item],
+.dark [data-thread-item] [data-sidebar-row] {
+  border-radius: var(--hbc-bar-radius) !important;
+}
+
+.dark [data-thread-item] [data-sidebar-row]:hover {
+  background: var(--hbc-bar) !important;
+  box-shadow: 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
+}
+
+.dark [data-thread-item] [data-sidebar-row][aria-current="page"] {
+  background: var(--hbc-bar-focus-text) !important;
+  box-shadow: 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
+}
+
+/* Muted grey text vanishes on the light top of the steel-blue bar, so every
+   label on it is white with a dark shadow, as HBC draws its labels. The
+   project icon keeps its own colors. */
+.dark [data-thread-item] [data-sidebar-row][aria-current="page"],
+.dark [data-thread-item] [data-sidebar-row][aria-current="page"] *:not([data-slot="project-monogram"], [data-slot="project-monogram"] *) {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.65);
+}
+
+/* Buttons: HBC's rounded rectangles, turning steel-blue on hover or focus. */
+.dark [data-slot="button"] {
+  border-radius: var(--hbc-bar-radius) !important;
+}
+
+.dark [data-slot="button"]:not(:disabled):hover,
+.dark [data-slot="button"]:focus-visible {
+  /* The plain HBC bar: labels sit mid-bar, where it is already dark enough.
+     The darkened version made short buttons look murky. border-box stops
+     the gradient tiling into the button's see-through 1px border, which drew
+     a second white shine line along the bottom. */
+  background: var(--hbc-bar-focus) border-box !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0 1px var(--hbc-bar-outline), var(--hbc-bar-shadow) !important;
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
+}
+
+/* The chat box is a black HBC bar. Its 1px outline still turns to the
+   accent color while you type. */
+.dark [data-slot="composer-host"],
+.dark [data-slot="composer-host"]:focus-within {
+  background: var(--hbc-bar) !important;
+  border-color: var(--hbc-bar-outline) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--hbc-bar-shadow) !important;
+}
+
+.dark [data-slot="composer-host"]:focus-within {
+  border-color: var(--hbc-accent) !important;
+}
+
+/* With a card attached (a question prompt or banner), T3 Code draws the
+   card and the input as their own shapes inside a frameless host. The bar
+   above would wrap both in one frame, so the host goes back to frameless.
+   These two data attributes are not on T3 Code's stable list. */
+.dark [data-slot="composer-host"]:has([data-composer-banner-stack], [data-pending-user-input-toggle]),
+.dark [data-slot="composer-host"]:has([data-composer-banner-stack], [data-pending-user-input-toggle]):focus-within {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Menus and the thread details card are HBC dialogs. These two draw their
+   own visible frame; the other popup slots are wrappers. */
+.dark [data-slot="menu-popup"],
+.dark [data-thread-details-card] {
+  background: var(--hbc-panel) !important;
+  border: 3px solid #000 !important;
+  border-radius: 10px !important;
 }
 
 /* ---------- Scrollbars ---------- */

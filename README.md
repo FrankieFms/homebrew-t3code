@@ -1,21 +1,92 @@
 # Homebrew Channel theme for T3 Code
 
 A T3 Code theme inspired by the channel menu of The Homebrew Channel on the Nintendo Wii.
-Bubbles rise behind the chat, panels are frosted glass, and messages sit in rounded channel tiles.
+Bubbles rise behind the chat, the sidebar and chat box sit on dark HBC-style bars, and the
+selected thread uses the steel-blue focus bar from the original menu.
+
+![Homebrew Channel theme preview](assets/previews/homebrew-default.png)
+
+[Watch the bubbles move](assets/previews/homebrew-default-video.mp4).
+
+## Quick start
+
+```sh
+git clone https://github.com/FrankieFms/homebrew-t3code.git
+cd homebrew-t3code
+t3 theme set ./themes/homebrew-channel.json
+```
+
+All themes are dark only, so set T3 Code to dark mode.
+See [Install](#install) for more detail.
+
+## Gallery
+
+| | | |
+|:-:|:-:|:-:|
+| [![Homebrew Channel](assets/previews/homebrew-default.png)](#homebrew-channel)<br>**[Homebrew Channel](#homebrew-channel)** | [![No Background](assets/previews/homebrew-no-bg.png)](#no-background)<br>**[No Background](#no-background)** | [![Pink](assets/previews/homebrew-pink.png)](#pink)<br>**[Pink](#pink)** |
+| [![Red](assets/previews/homebrew-red.png)](#red)<br>**[Red](#red)** | [![Orange](assets/previews/homebrew-orange.png)](#orange)<br>**[Orange](#orange)** | [![Gold](assets/previews/homebrew-gold.png)](#gold)<br>**[Gold](#gold)** |
+| [![Yellow](assets/previews/homebrew-yellow.png)](#yellow)<br>**[Yellow](#yellow)** | [![Green](assets/previews/homebrew-green.png)](#green)<br>**[Green](#green)** | [![Teal](assets/previews/homebrew-teal.png)](#teal)<br>**[Teal](#teal)** |
+| [![Indigo](assets/previews/homebrew-indigo.png)](#indigo)<br>**[Indigo](#indigo)** | [![Purple](assets/previews/homebrew-purple.png)](#purple)<br>**[Purple](#purple)** | [![Magenta](assets/previews/homebrew-magenta.png)](#magenta)<br>**[Magenta](#magenta)** |
+| [![Grey](assets/previews/homebrew-grey.png)](#grey)<br>**[Grey](#grey)** | | |
 
 ## Themes
 
-All themes are in the `themes/` folder. Run the install command from the repository folder.
-The color variations are dark only, so set T3 Code to dark mode for them.
+All themes are in the `themes/` folder. Run each install command from the repository folder,
+or download one theme file with its own link and install it from wherever you saved it.
+Keep the file name: T3 Code uses it as the theme id.
+The commands work in Terminal on macOS and in PowerShell on Windows.
+Every color variation has its own recolored water, pre-tinted bubbles and matching accent.
 
 ### Homebrew Channel
 
 ![Homebrew Channel theme preview](assets/previews/homebrew-default.png)
 
-The main theme. Dark mode uses the Homebrew Channel underwater background. Light mode is a soft white menu look. [Watch the bubbles move](assets/previews/homebrew-default-video.mp4).
+The main theme: the Homebrew Channel underwater background, bubbles and Wii-blue accents.
 
 ```sh
 t3 theme set ./themes/homebrew-channel.json
+```
+
+Or without cloning ([download homebrew-channel.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel.json
+t3 theme set ./homebrew-channel.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel.json -OutFile homebrew-channel.json
+t3 theme set .\homebrew-channel.json
+```
+
+### No Background
+
+![No Background theme preview](assets/previews/homebrew-no-bg.png)
+
+The main theme with a plain navy gradient in place of the underwater image. The bubbles stay.
+
+```sh
+t3 theme set ./themes/homebrew-channel-no-bg.json
+```
+
+Or without cloning ([download homebrew-channel-no-bg.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-no-bg.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-no-bg.json
+t3 theme set ./homebrew-channel-no-bg.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-no-bg.json -OutFile homebrew-channel-no-bg.json
+t3 theme set .\homebrew-channel-no-bg.json
 ```
 
 ### Pink
@@ -28,6 +99,22 @@ Light pink water, pink bubbles and accents.
 t3 theme set ./themes/homebrew-channel-pink.json
 ```
 
+Or without cloning ([download homebrew-channel-pink.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-pink.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-pink.json
+t3 theme set ./homebrew-channel-pink.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-pink.json -OutFile homebrew-channel-pink.json
+t3 theme set .\homebrew-channel-pink.json
+```
+
 ### Red
 
 ![Red theme preview](assets/previews/homebrew-red.png)
@@ -36,6 +123,22 @@ Red water, red bubbles and accents.
 
 ```sh
 t3 theme set ./themes/homebrew-channel-red.json
+```
+
+Or without cloning ([download homebrew-channel-red.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-red.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-red.json
+t3 theme set ./homebrew-channel-red.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-red.json -OutFile homebrew-channel-red.json
+t3 theme set .\homebrew-channel-red.json
 ```
 
 ### Orange
@@ -48,6 +151,22 @@ Orange water, bubbles and accents.
 t3 theme set ./themes/homebrew-channel-orange.json
 ```
 
+Or without cloning ([download homebrew-channel-orange.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-orange.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-orange.json
+t3 theme set ./homebrew-channel-orange.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-orange.json -OutFile homebrew-channel-orange.json
+t3 theme set .\homebrew-channel-orange.json
+```
+
 ### Gold
 
 ![Gold theme preview](assets/previews/homebrew-gold.png)
@@ -56,6 +175,22 @@ Gold water, bubbles and accents.
 
 ```sh
 t3 theme set ./themes/homebrew-channel-gold.json
+```
+
+Or without cloning ([download homebrew-channel-gold.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-gold.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-gold.json
+t3 theme set ./homebrew-channel-gold.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-gold.json -OutFile homebrew-channel-gold.json
+t3 theme set .\homebrew-channel-gold.json
 ```
 
 ### Yellow
@@ -68,6 +203,22 @@ Lime-yellow water, bubbles and accents.
 t3 theme set ./themes/homebrew-channel-yellow.json
 ```
 
+Or without cloning ([download homebrew-channel-yellow.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-yellow.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-yellow.json
+t3 theme set ./homebrew-channel-yellow.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-yellow.json -OutFile homebrew-channel-yellow.json
+t3 theme set .\homebrew-channel-yellow.json
+```
+
 ### Green
 
 ![Green theme preview](assets/previews/homebrew-green.png)
@@ -76,6 +227,22 @@ Green water, bubbles and accents.
 
 ```sh
 t3 theme set ./themes/homebrew-channel-green.json
+```
+
+Or without cloning ([download homebrew-channel-green.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-green.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-green.json
+t3 theme set ./homebrew-channel-green.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-green.json -OutFile homebrew-channel-green.json
+t3 theme set .\homebrew-channel-green.json
 ```
 
 ### Teal
@@ -88,6 +255,22 @@ Teal water, bubbles and accents.
 t3 theme set ./themes/homebrew-channel-teal.json
 ```
 
+Or without cloning ([download homebrew-channel-teal.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-teal.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-teal.json
+t3 theme set ./homebrew-channel-teal.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-teal.json -OutFile homebrew-channel-teal.json
+t3 theme set .\homebrew-channel-teal.json
+```
+
 ### Indigo
 
 ![Indigo theme preview](assets/previews/homebrew-indigo.png)
@@ -96,6 +279,22 @@ Indigo water, bubbles and accents.
 
 ```sh
 t3 theme set ./themes/homebrew-channel-indigo.json
+```
+
+Or without cloning ([download homebrew-channel-indigo.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-indigo.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-indigo.json
+t3 theme set ./homebrew-channel-indigo.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-indigo.json -OutFile homebrew-channel-indigo.json
+t3 theme set .\homebrew-channel-indigo.json
 ```
 
 ### Purple
@@ -108,6 +307,22 @@ Purple water, bubbles and accents.
 t3 theme set ./themes/homebrew-channel-purple.json
 ```
 
+Or without cloning ([download homebrew-channel-purple.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-purple.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-purple.json
+t3 theme set ./homebrew-channel-purple.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-purple.json -OutFile homebrew-channel-purple.json
+t3 theme set .\homebrew-channel-purple.json
+```
+
 ### Magenta
 
 ![Magenta theme preview](assets/previews/homebrew-magenta.png)
@@ -116,6 +331,22 @@ Magenta water, bubbles and accents.
 
 ```sh
 t3 theme set ./themes/homebrew-channel-magenta.json
+```
+
+Or without cloning ([download homebrew-channel-magenta.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-magenta.json)):
+
+macOS:
+
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-magenta.json
+t3 theme set ./homebrew-channel-magenta.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-magenta.json -OutFile homebrew-channel-magenta.json
+t3 theme set .\homebrew-channel-magenta.json
 ```
 
 ### Grey
@@ -128,23 +359,28 @@ Charcoal water, grey bubbles and white accents.
 t3 theme set ./themes/homebrew-channel-grey.json
 ```
 
-### Other versions
+Or without cloning ([download homebrew-channel-grey.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-grey.json)):
 
-- **No Background**: the main theme with no background image. Dark mode uses a navy gradient.
+macOS:
 
-  ```sh
-  t3 theme set ./themes/homebrew-channel-no-bg.json
-  ```
+```sh
+curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-grey.json
+t3 theme set ./homebrew-channel-grey.json
+```
 
-- **Colors only**: a dark, deep navy look with Wii-blue accents and no CSS.
+Windows (PowerShell):
 
-  ```sh
-  t3 theme set ./themes/homebrew-channel-colors.json
-  ```
+```powershell
+Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-grey.json -OutFile homebrew-channel-grey.json
+t3 theme set .\homebrew-channel-grey.json
+```
 
 ## Requirements
 
-- The `t3` CLI. T3 Code installs it at `~/.t3/bin/t3` (`t3.cmd` on Windows).
+- T3 Code stable with theme support.
+- The `t3` CLI. T3 Code installs it at `~/.t3/bin/t3` on macOS and
+  `%USERPROFILE%\.t3\bin\t3.cmd` on Windows. If your terminal cannot find `t3`,
+  type that full path in place of `t3`.
 
 Check that your build supports themes:
 
@@ -175,39 +411,72 @@ If the command shows `set`, `clear` and `show`, your build supports themes.
 
    The output should show `Environment theme: "homebrew-channel"`.
 
-The published copy lives in `~/.t3/userdata/themes/`. After the first publish,
+The published copy lives in `~/.t3/userdata/themes/` on macOS and
+`%USERPROFILE%\.t3\userdata\themes\` on Windows. After the first publish,
 you can switch between published themes by id:
 
 ```sh
 t3 theme set homebrew-channel-pink
 ```
 
+### Install every theme at once
+
+macOS:
+
+```sh
+for f in themes/*.json; do
+  case "$f" in *-colors.json) continue ;; esac
+  t3 theme set "$f"
+done
+t3 theme set homebrew-channel
+```
+
+Windows PowerShell:
+
+```powershell
+Get-ChildItem themes\*.json -Exclude *-colors.json | ForEach-Object { t3 theme set $_.FullName }
+t3 theme set homebrew-channel
+```
+
 ### Install by copying the file
 
-You can also copy a theme file into `~/.t3/userdata/themes/` yourself.
+You can also copy a theme file into that `themes` folder yourself.
 T3 Code watches that folder and lists the theme. Then pick it in T3 Code,
 or run `t3 theme set <theme id>`.
+
+## Performance
+
+The bubbles move with GPU-composited `translate` animations, and the theme uses no
+`backdrop-filter` blur. On a typical desktop, T3 Code's power use stays low to moderate
+while idle. Scrolling and moving the mouse raise it for a moment, as in any app.
+
+The original bubble animation is closer to the Homebrew Channel but repaints the whole
+window every frame. To switch back to it, see the comment at the top of
+`src/hbc-bubbles-fast.css` and `CSS_FILES` in `scripts/build-theme.py`.
 
 ## Customize
 
 ```
-themes/              Ready-to-use theme files. Built by scripts/build-theme.py,
-                     except homebrew-channel-colors.json, which is edited by hand.
+themes/                  Ready-to-use theme files. Built by scripts/build-theme.py,
+                         except homebrew-channel-colors.json: the base palette the
+                         build reads, edited by hand. It is not a theme to install.
 src/
-  hbc-bubbles.css    A pure-CSS version of the rising background bubbles.
-  hbc-theme.css      The Homebrew Channel styling for T3 Code's layout.
+  hbc-bubbles-fast.css   The rising background bubbles, GPU-friendly. Used by default.
+  hbc-bubbles.css        The original bubble animation, kept for switching back.
+  hbc-theme.css          The Homebrew Channel styling for T3 Code's layout.
 scripts/
-  build-theme.py     Holds the palettes and the list of themes. Merges them with
-                     the CSS and backgrounds into themes/.
-  make-backgrounds.py  Makes the recolored WebP backgrounds. Needs Pillow.
+  build-theme.py         Holds the palettes and the list of themes. Merges them with
+                         the CSS, backgrounds and bubbles into themes/.
+  make-backgrounds.py    Makes the recolored WebP backgrounds and tinted bubbles.
+                         Needs Pillow.
 assets/
-  source/            The original Homebrew Channel backgrounds.
-  generated/         The compressed WebP backgrounds the themes embed.
-  previews/          Screenshots of each theme for this README.
+  source/                The original Homebrew Channel background and bubble art.
+  generated/             The WebP backgrounds and tinted bubbles the themes embed.
+  previews/              Screenshots of each theme for this README.
 ```
 
 The dark palette of the main theme comes from `themes/homebrew-channel-colors.json`.
-The pink and red palettes are tinted from it.
+Every color variation is tinted from it.
 
 After editing a CSS file or a palette, rebuild the themes and apply one:
 
@@ -216,16 +485,20 @@ python scripts/build-theme.py
 t3 theme set ./themes/homebrew-channel.json
 ```
 
-To add a color variation, add a background entry in `scripts/make-backgrounds.py`
-and a theme entry in `THEMES` in `scripts/build-theme.py`. Then run both scripts:
+To add a color variation:
 
-```sh
-pip install pillow
-python scripts/make-backgrounds.py
-python scripts/build-theme.py
-```
+1. Add a background entry to `VARIATIONS` and a bubble entry to `BUBBLE_TINTS`
+   in `scripts/make-backgrounds.py`.
+2. Add a palette and a `variation(...)` entry to `THEMES` in `scripts/build-theme.py`.
+3. Run both scripts:
 
-Each theme's CSS can be at most 50,000 characters. The build script stops if one is longer.
+   ```sh
+   pip install pillow
+   python scripts/make-backgrounds.py
+   python scripts/build-theme.py
+   ```
+
+The build script minifies the CSS inside each theme file. The files in `src/` keep their comments.
 
 ## Uninstall
 
@@ -237,10 +510,16 @@ t3 theme clear
 
 Connected clients keep the theme they already have until you pick another
 theme. To remove the published copies as well, delete the theme files from
-`~/.t3/userdata/themes/`.
+that `themes` folder.
 
 ## Limits
 
 - Color values must be hex (`#rgb` or `#rrggbb`).
-- The `css` field holds at most 50,000 characters. Images must be embedded as `data:` URLs.
+- The `css` field holds at most 50,000 characters. The build script stops if a theme is longer.
+- CSS `url()` accepts only `data:` URLs, so the backgrounds and bubbles are embedded.
 - CSS cannot reach the terminal text, the file tree or diff internals. Those use the color roles.
+
+## Credits
+
+The Homebrew Channel is by Team Twiizers. This theme is a fan tribute and is not
+affiliated with Team Twiizers, Nintendo or T3 Code.
