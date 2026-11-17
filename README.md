@@ -5,27 +5,142 @@ Bubbles rise behind the chat, panels are frosted glass, and messages sit in roun
 
 ## Themes
 
-All themes are in the `themes/` folder.
+All themes are in the `themes/` folder. Run the install command from the repository folder.
+The color variations are dark only, so set T3 Code to dark mode for them.
 
-| Theme file | Theme id | Look |
-| --- | --- | --- |
-| `homebrew-channel.json` | `homebrew-channel` | Main theme. Dark mode uses the Homebrew Channel underwater background. Light mode is a soft white menu look. |
-| `homebrew-channel-no-bg.json` | `homebrew-channel-no-bg` | Backup of the main theme with no background image. Dark mode uses a navy gradient. |
-| `homebrew-channel-pink.json` | `homebrew-channel-pink` | Dark only. Light pink water, pink bubbles and accents. |
-| `homebrew-channel-red.json` | `homebrew-channel-red` | Dark only. Red water, red bubbles and accents. |
-| `homebrew-channel-yellow.json` | `homebrew-channel-yellow` | Dark only. Lime-yellow water, bubbles and accents. |
-| `homebrew-channel-green.json` | `homebrew-channel-green` | Dark only. Green water, bubbles and accents. |
-| `homebrew-channel-purple.json` | `homebrew-channel-purple` | Dark only. Purple water, bubbles and accents. |
-| `homebrew-channel-orange.json` | `homebrew-channel-orange` | Dark only. Orange water, bubbles and accents. |
-| `homebrew-channel-grey.json` | `homebrew-channel-grey` | Dark only. Charcoal water, grey bubbles and white accents. |
-| `homebrew-channel-teal.json` | `homebrew-channel-teal` | Dark only. Teal water, bubbles and accents. |
-| `homebrew-channel-gold.json` | `homebrew-channel-gold` | Dark only. Gold water, bubbles and accents. |
-| `homebrew-channel-magenta.json` | `homebrew-channel-magenta` | Dark only. Magenta water, bubbles and accents. |
-| `homebrew-channel-indigo.json` | `homebrew-channel-indigo` | Dark only. Indigo water, bubbles and accents. |
+### Homebrew Channel
 
-`themes/homebrew-channel-colors.json` is a colors-only version with no CSS: a dark, deep navy look with Wii-blue accents.
+![Homebrew Channel theme preview](assets/previews/homebrew-default.png)
 
-Set T3 Code to dark mode for the color variations. They have no light palette.
+The main theme. Dark mode uses the Homebrew Channel underwater background. Light mode is a soft white menu look. [Watch the bubbles move](assets/previews/homebrew-default-video.mp4).
+
+```sh
+t3 theme set ./themes/homebrew-channel.json
+```
+
+### Pink
+
+![Pink theme preview](assets/previews/homebrew-pink.png)
+
+Light pink water, pink bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-pink.json
+```
+
+### Red
+
+![Red theme preview](assets/previews/homebrew-red.png)
+
+Red water, red bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-red.json
+```
+
+### Orange
+
+![Orange theme preview](assets/previews/homebrew-orange.png)
+
+Orange water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-orange.json
+```
+
+### Gold
+
+![Gold theme preview](assets/previews/homebrew-gold.png)
+
+Gold water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-gold.json
+```
+
+### Yellow
+
+![Yellow theme preview](assets/previews/homebrew-yellow.png)
+
+Lime-yellow water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-yellow.json
+```
+
+### Green
+
+![Green theme preview](assets/previews/homebrew-green.png)
+
+Green water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-green.json
+```
+
+### Teal
+
+![Teal theme preview](assets/previews/homebrew-teal.png)
+
+Teal water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-teal.json
+```
+
+### Indigo
+
+![Indigo theme preview](assets/previews/homebrew-indigo.png)
+
+Indigo water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-indigo.json
+```
+
+### Purple
+
+![Purple theme preview](assets/previews/homebrew-purple.png)
+
+Purple water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-purple.json
+```
+
+### Magenta
+
+![Magenta theme preview](assets/previews/homebrew-magenta.png)
+
+Magenta water, bubbles and accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-magenta.json
+```
+
+### Grey
+
+![Grey theme preview](assets/previews/homebrew-grey.png)
+
+Charcoal water, grey bubbles and white accents.
+
+```sh
+t3 theme set ./themes/homebrew-channel-grey.json
+```
+
+### Other versions
+
+- **No Background**: the main theme with no background image. Dark mode uses a navy gradient.
+
+  ```sh
+  t3 theme set ./themes/homebrew-channel-no-bg.json
+  ```
+
+- **Colors only**: a dark, deep navy look with Wii-blue accents and no CSS.
+
+  ```sh
+  t3 theme set ./themes/homebrew-channel-colors.json
+  ```
 
 ## Requirements
 
@@ -85,11 +200,10 @@ scripts/
   build-theme.py     Holds the palettes and the list of themes. Merges them with
                      the CSS and backgrounds into themes/.
   make-backgrounds.py  Makes the recolored WebP backgrounds. Needs Pillow.
-archive/             Unreleased experiments, such as the rainbow theme.
-                     Built by scripts/build-theme.py. Not supported.
 assets/
   source/            The original Homebrew Channel backgrounds.
   generated/         The compressed WebP backgrounds the themes embed.
+  previews/          Screenshots of each theme for this README.
 ```
 
 The dark palette of the main theme comes from `themes/homebrew-channel-colors.json`.

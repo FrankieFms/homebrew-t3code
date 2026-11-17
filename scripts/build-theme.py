@@ -15,7 +15,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "themes"
-ARCHIVE_DIR = ROOT / "archive"
 CSS_FILES = [ROOT / "src" / "hbc-bubbles.css", ROOT / "src" / "hbc-theme.css"]
 BACKGROUNDS = ROOT / "assets" / "generated"
 CSS_MAX_LENGTH = 50_000
@@ -139,17 +138,6 @@ TEAL = {**tint(DARK, 172), **accent_roles("#2ee6c8", "#04221d", "#22cdb1", "#7ff
 GOLD = {**tint(DARK, 45), **accent_roles("#ffc233", "#2a1d00", "#eaa91a", "#ffd877")}
 MAGENTA = {**tint(DARK, 300), **accent_roles("#e55cff", "#26052c", "#d045eb", "#f09bff")}
 INDIGO = {**tint(DARK, 235), **accent_roles("#6d7dff", "#0a0f33", "#5a6bf0", "#a3adff")}
-RAINBOW = {**tint(DARK, 0, 0.0), **accent_roles("#ff5fd2", "#2a0420", "#f046c4", "#ff9be6")}
-
-RAINBOW_CSS = """html::before { filter: hue-rotate(161deg) saturate(1.4); }
-html::after { filter: hue-rotate(221deg) saturate(1.4); }
-body::before { filter: hue-rotate(281deg) saturate(1.4); }
-body::after { filter: hue-rotate(71deg) saturate(1.4); }
-
-::-webkit-scrollbar-thumb,
-[data-slot="scroll-area-thumb"] {
-  background-image: linear-gradient(180deg, #ff4d5a, #f4790f, #d4e600, #2ed82b, #34beed, #9b6dff, #ff5fd2) !important;
-}"""
 
 NAVY_BACKDROP ="linear-gradient(180deg, #13263a 0%, #0d1824 60%, #08111a 100%)"
 
@@ -170,7 +158,7 @@ def tinted_glass(hue: float, saturation: float = 1.0) -> str:
 
 
 def variation(id_: str, name: str, palette: dict, accent: str, bubbles: str, hue: float,
-              saturation: float = 1.0, extra_css: str = "") -> dict:
+              saturation: float = 1.0) -> dict:
     """A dark-only color variation with its own background and tinted bubbles."""
     return {
         "id": f"homebrew-channel-{id_}",
@@ -179,8 +167,7 @@ def variation(id_: str, name: str, palette: dict, accent: str, bubbles: str, hue
         "dark": palette,
         "background": f"background_wide_{id_}.webp",
         "css": f":root {{\n  --hbc-accent: {accent};\n  --hbc-bubble-filter: {bubbles};\n}}\n\n"
-        + tinted_glass(hue, saturation)
-        + (f"\n\n{extra_css}" if extra_css else ""),
+        + tinted_glass(hue, saturation),
     }
 
 
@@ -231,13 +218,6 @@ THEMES = [
     variation("gold", "Gold", GOLD, "#ffc233", "hue-rotate(206deg)", 45),
     variation("magenta", "Magenta", MAGENTA, "#e55cff", "hue-rotate(101deg)", 300),
     variation("indigo", "Indigo", INDIGO, "#6d7dff", "hue-rotate(36deg)", 235),
-    # Archived, not released: built into archive/ instead of themes/.
-    # Each bubble layer gets its own color, and the scrollbar thumb is a
-    # rainbow gradient.
-    {
-        **variation("rainbow", "Rainbow", RAINBOW, "#ff5fd2", "none", 0, 0.0, extra_css=RAINBOW_CSS),
-        "archived": True,
-    },
 ]
 
 
@@ -274,13 +254,12 @@ def build(spec: dict) -> dict:
 
 
 def main() -> None:
+    OUTPUT_DIR.mkdir(exist_ok=True)
     for spec in THEMES:
         theme = build(spec)
-        folder = ARCHIVE_DIR if spec.get("archived") else OUTPUT_DIR
-        folder.mkdir(exist_ok=True)
-        output = folder / f"{spec['id']}.json"
+        output = OUTPUT_DIR / f"{spec['id']}.json"
         output.write_text(json.dumps(theme, indent=2) + "\n", "utf-8", newline="\n")
-        print(f"Wrote {folder.name}/{output.name}: {len(theme['css'])} characters of CSS.")
+        print(f"Wrote themes/{output.name}: {len(theme['css'])} characters of CSS.")
 
 
 if __name__ == "__main__":
