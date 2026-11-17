@@ -9,17 +9,7 @@
      pre-tinted bubble images (no CSS filter on the bubble layers). */
   --hbc-accent: #34beed;
 
-  /* Light: the Homebrew Channel menu, soft white fading to grey-blue. */
-  --hbc-backdrop: linear-gradient(180deg, #ffffff 0%, #f1f5f8 55%, #dde6ed 100%);
-  --hbc-glass: rgba(255, 255, 255, 0.62);
-  --hbc-glass-strong: rgba(255, 255, 255, 0.86);
-  --hbc-tile-border: #c7d3dd;
-  --hbc-tile-shadow: 0 2px 6px rgba(40, 70, 95, 0.12);
   --hbc-radius: 14px;
-
-  /* The glossy white rim and top shine of a Homebrew Channel tile. */
-  --hbc-rim: rgba(255, 255, 255, 0.95);
-  --hbc-gloss: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 55%);
 }
 
 .dark {
@@ -35,8 +25,6 @@
   --hbc-glass-strong: rgba(19, 34, 53, 0.88);
   --hbc-tile-border: #24405a;
   --hbc-tile-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --hbc-rim: rgba(255, 255, 255, 0.55);
-  --hbc-gloss: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 55%);
 }
 
 /* ---------- Backdrop: the gradient sits on the root, bubbles above it ---------- */
@@ -91,27 +79,6 @@ body *:has([data-workspace-area="conversation"]),
   background: color-mix(in srgb, var(--hbc-accent) 70%, transparent) !important;
 }
 
-/* [data-thread-item] is the list item; the visible row inside it carries
-   data-sidebar-row and aria-current="page" when its thread is open. */
-[data-thread-item],
-[data-thread-item] [data-sidebar-row] {
-  border-radius: 10px !important;
-}
-
-[data-thread-item] [data-sidebar-row]:hover {
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hbc-rim) 35%, transparent) !important;
-}
-
-/* The open thread is the selected channel: a glossy white rim inside a
-   glowing ring in the accent color. */
-[data-thread-item] [data-sidebar-row][aria-current="page"] {
-  background: var(--hbc-gloss), var(--hbc-glass-strong) !important;
-  box-shadow:
-    inset 0 0 0 1px var(--hbc-rim),
-    0 0 0 2px color-mix(in srgb, var(--hbc-accent) 75%, transparent),
-    0 2px 12px color-mix(in srgb, var(--hbc-accent) 40%, transparent) !important;
-}
-
 /* ---------- Channel tiles: messages, composer, cards ---------- */
 
 [data-user-message-bubble],
@@ -131,19 +98,6 @@ body *:has([data-workspace-area="conversation"]),
   border-width: 1px !important;
 }
 
-/* The chat box shines like the Homebrew Channel's bottom bar. */
-[data-slot="composer-host"],
-[data-slot="composer-host"]:focus-within {
-  background: var(--hbc-gloss), var(--hbc-glass-strong) !important;
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, var(--hbc-rim) 45%, transparent),
-    var(--hbc-tile-shadow) !important;
-}
-
-[data-slot="composer-host"]:focus-within {
-  border-color: var(--hbc-accent) !important;
-}
-
 /* Compact chip: a filled accent pill while it will compact before sending.
    aria-label is not on T3 Code's stable selector list, so check it after updates. */
 [data-chat-composer-form] button[aria-label^="Compact "][aria-pressed="true"] {
@@ -156,16 +110,6 @@ body *:has([data-workspace-area="conversation"]),
 [data-chat-composer-form] button[aria-label^="Compact "][aria-pressed="true"] svg,
 [data-chat-composer-form] button[aria-label^="Compact "][aria-pressed="true"] span {
   color: var(--hbc-accent) !important;
-}
-
-/* Popups keep T3 Code's own frosted glass and faint outline. The popup
-   slots are often invisible wrappers, so a border on them draws a second
-   frame around the real one. */
-
-/* ---------- Buttons: rounded like the HBC bottom bar ---------- */
-
-[data-slot="button"] {
-  border-radius: 999px !important;
 }
 
 /* ---------- Homebrew Channel art (dark mode) ----------
