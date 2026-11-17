@@ -6,13 +6,13 @@ Bubbles rise behind the chat, panels are frosted glass, and messages sit in roun
 ## Themes
 
 All themes are in the `themes/` folder. Run the install command from the repository folder.
-The color variations are dark only, so set T3 Code to dark mode for them.
+All themes are dark only, so set T3 Code to dark mode.
 
 ### Homebrew Channel
 
 ![Homebrew Channel theme preview](assets/previews/homebrew-default.png)
 
-The main theme. Dark mode uses the Homebrew Channel underwater background. Light mode is a soft white menu look. [Watch the bubbles move](assets/previews/homebrew-default-video.mp4).
+The main theme: the Homebrew Channel underwater background, bubbles and Wii-blue accents. Dark only. [Watch the bubbles move](assets/previews/homebrew-default-video.mp4).
 
 ```sh
 t3 theme set ./themes/homebrew-channel.json

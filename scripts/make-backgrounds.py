@@ -45,12 +45,38 @@ def recolor(image: Image.Image, hue: float, saturation: float, value: float) -> 
     return Image.merge("HSV", (h, s, v)).convert("RGB")
 
 
+# The bubble art (hue 201, close to the water) is tinted per color variation
+# here, so themes need no per-frame CSS filter on the four full-screen bubble
+# layers. Keys are theme ids without the "homebrew-channel-" prefix.
+BUBBLE_SOURCE = ASSETS / "source" / "bubbles"
+BUBBLE_OUTPUT = OUTPUT_DIR / "bubbles"
+BUBBLE_TINTS = {
+    "pink": (330, 0.8), "red": (356, 1.0), "yellow": (64, 1.0), "green": (120, 1.0),
+    "purple": (260, 1.0), "orange": (27, 1.0), "grey": (199, 0.0), "teal": (172, 1.0),
+    "gold": (45, 1.0), "magenta": (300, 1.0), "indigo": (235, 1.0),
+}
+
+
+def tint_bubble(image: Image.Image, hue: float, saturation: float) -> Image.Image:
+    """Recolor RGBA bubble art, keeping its alpha."""
+    tinted = recolor(image.convert("RGB"), hue, saturation, 1.0).convert("RGBA")
+    tinted.putalpha(image.getchannel("A"))
+    return tinted
+
+
 def main() -> None:
     source = Image.open(SOURCE).convert("RGB")
     for name, settings in VARIATIONS.items():
         output = OUTPUT_DIR / name
         recolor(source, **settings).save(output, "WEBP", quality=QUALITY, method=6)
         print(f"Wrote {output.name}: {output.stat().st_size} bytes.")
+    BUBBLE_OUTPUT.mkdir(exist_ok=True)
+    for theme, (hue, saturation) in BUBBLE_TINTS.items():
+        for n in (1, 2, 3):
+            source = Image.open(BUBBLE_SOURCE / f"bubble{n}.png").convert("RGBA")
+            output = BUBBLE_OUTPUT / f"{theme}-{n}.png"
+            tint_bubble(source, hue, saturation).save(output, optimize=True)
+        print(f"Wrote bubbles/{theme}-1..3.png.")
 
 
 if __name__ == "__main__":
