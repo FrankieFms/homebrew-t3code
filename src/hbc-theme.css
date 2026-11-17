@@ -251,6 +251,20 @@ body *:has([data-workspace-area="conversation"]),
   text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
 }
 
+/* Keyboard focus. The bar rules above replace box-shadow, which also held
+   T3 Code's focus ring, and hover looks the same as focus. An accent
+   outline marks the focused button or thread row instead. Outlines follow
+   the border radius and are kept in Windows high-contrast mode. */
+.dark [data-slot="button"]:focus-visible {
+  outline: 2px solid var(--hbc-accent) !important;
+  outline-offset: 2px;
+}
+
+.dark [data-thread-item]:is(:focus-visible, :has(:focus-visible)) {
+  outline: 2px solid var(--hbc-accent) !important;
+  outline-offset: 1px;
+}
+
 /* The chat box is a black HBC bar. Its 1px outline still turns to the
    accent color while you type. */
 .dark [data-slot="composer-host"],
@@ -283,6 +297,16 @@ body *:has([data-workspace-area="conversation"]),
   background: var(--hbc-panel) !important;
   border: 3px solid #000 !important;
   border-radius: 10px !important;
+}
+
+/* ---------- Caret and text selection ---------- */
+
+.composer-tiptap {
+  caret-color: var(--hbc-accent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--hbc-accent) 40%, transparent);
 }
 
 /* ---------- Scrollbars ---------- */
