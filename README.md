@@ -10,10 +10,18 @@ selected thread uses the steel-blue focus bar from the original menu.
 
 ## Quick start
 
+Install the main theme. macOS:
+
 ```sh
-git clone https://github.com/FrankieFms/homebrew-t3code.git
-cd homebrew-t3code
-t3 theme set ./themes/homebrew-channel.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json
+t3 theme set ./homebrew-channel.json
+```
+
+Windows (PowerShell):
+
+```powershell
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json -OutFile homebrew-channel.json
+t3 theme set .\homebrew-channel.json
 ```
 
 All themes are dark only, so set T3 Code to dark mode.
@@ -31,8 +39,8 @@ See [Install](#install) for more detail.
 
 ## Themes
 
-All themes are in the `themes/` folder. Run each install command from the repository folder,
-or download one theme file with its own link and install it from wherever you saved it.
+Every theme is attached to the [latest release](https://github.com/FrankieFms/homebrew-t3code/releases/latest).
+Each theme below has a download link and install commands for macOS and Windows.
 Keep the file name: T3 Code uses it as the theme id.
 The commands work in Terminal on macOS and in PowerShell on Windows.
 Every color variation has its own recolored water, pre-tinted bubbles and matching accent.
@@ -43,24 +51,26 @@ Every color variation has its own recolored water, pre-tinted bubbles and matchi
 
 The main theme: the Homebrew Channel underwater background, bubbles and Wii-blue accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel.json
-```
-
-Or without cloning ([download homebrew-channel.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel.json)):
+[Download homebrew-channel.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json
 t3 theme set ./homebrew-channel.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel.json -OutFile homebrew-channel.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json -OutFile homebrew-channel.json
 t3 theme set .\homebrew-channel.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel.json
 ```
 
 ### No Background
@@ -69,24 +79,26 @@ t3 theme set .\homebrew-channel.json
 
 The main theme with a plain navy gradient in place of the underwater image. The bubbles stay.
 
-```sh
-t3 theme set ./themes/homebrew-channel-no-bg.json
-```
-
-Or without cloning ([download homebrew-channel-no-bg.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-no-bg.json)):
+[Download homebrew-channel-no-bg.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-no-bg.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-no-bg.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-no-bg.json
 t3 theme set ./homebrew-channel-no-bg.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-no-bg.json -OutFile homebrew-channel-no-bg.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-no-bg.json -OutFile homebrew-channel-no-bg.json
 t3 theme set .\homebrew-channel-no-bg.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-no-bg.json
 ```
 
 ### Pink
@@ -95,24 +107,26 @@ t3 theme set .\homebrew-channel-no-bg.json
 
 Light pink water, pink bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-pink.json
-```
-
-Or without cloning ([download homebrew-channel-pink.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-pink.json)):
+[Download homebrew-channel-pink.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-pink.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-pink.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-pink.json
 t3 theme set ./homebrew-channel-pink.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-pink.json -OutFile homebrew-channel-pink.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-pink.json -OutFile homebrew-channel-pink.json
 t3 theme set .\homebrew-channel-pink.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-pink.json
 ```
 
 ### Red
@@ -121,24 +135,26 @@ t3 theme set .\homebrew-channel-pink.json
 
 Red water, red bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-red.json
-```
-
-Or without cloning ([download homebrew-channel-red.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-red.json)):
+[Download homebrew-channel-red.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-red.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-red.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-red.json
 t3 theme set ./homebrew-channel-red.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-red.json -OutFile homebrew-channel-red.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-red.json -OutFile homebrew-channel-red.json
 t3 theme set .\homebrew-channel-red.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-red.json
 ```
 
 ### Orange
@@ -147,24 +163,26 @@ t3 theme set .\homebrew-channel-red.json
 
 Orange water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-orange.json
-```
-
-Or without cloning ([download homebrew-channel-orange.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-orange.json)):
+[Download homebrew-channel-orange.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-orange.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-orange.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-orange.json
 t3 theme set ./homebrew-channel-orange.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-orange.json -OutFile homebrew-channel-orange.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-orange.json -OutFile homebrew-channel-orange.json
 t3 theme set .\homebrew-channel-orange.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-orange.json
 ```
 
 ### Gold
@@ -173,24 +191,26 @@ t3 theme set .\homebrew-channel-orange.json
 
 Gold water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-gold.json
-```
-
-Or without cloning ([download homebrew-channel-gold.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-gold.json)):
+[Download homebrew-channel-gold.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-gold.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-gold.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-gold.json
 t3 theme set ./homebrew-channel-gold.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-gold.json -OutFile homebrew-channel-gold.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-gold.json -OutFile homebrew-channel-gold.json
 t3 theme set .\homebrew-channel-gold.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-gold.json
 ```
 
 ### Yellow
@@ -199,24 +219,26 @@ t3 theme set .\homebrew-channel-gold.json
 
 Lime-yellow water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-yellow.json
-```
-
-Or without cloning ([download homebrew-channel-yellow.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-yellow.json)):
+[Download homebrew-channel-yellow.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-yellow.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-yellow.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-yellow.json
 t3 theme set ./homebrew-channel-yellow.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-yellow.json -OutFile homebrew-channel-yellow.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-yellow.json -OutFile homebrew-channel-yellow.json
 t3 theme set .\homebrew-channel-yellow.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-yellow.json
 ```
 
 ### Green
@@ -225,24 +247,26 @@ t3 theme set .\homebrew-channel-yellow.json
 
 Green water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-green.json
-```
-
-Or without cloning ([download homebrew-channel-green.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-green.json)):
+[Download homebrew-channel-green.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-green.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-green.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-green.json
 t3 theme set ./homebrew-channel-green.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-green.json -OutFile homebrew-channel-green.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-green.json -OutFile homebrew-channel-green.json
 t3 theme set .\homebrew-channel-green.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-green.json
 ```
 
 ### Teal
@@ -251,24 +275,26 @@ t3 theme set .\homebrew-channel-green.json
 
 Teal water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-teal.json
-```
-
-Or without cloning ([download homebrew-channel-teal.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-teal.json)):
+[Download homebrew-channel-teal.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-teal.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-teal.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-teal.json
 t3 theme set ./homebrew-channel-teal.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-teal.json -OutFile homebrew-channel-teal.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-teal.json -OutFile homebrew-channel-teal.json
 t3 theme set .\homebrew-channel-teal.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-teal.json
 ```
 
 ### Indigo
@@ -277,24 +303,26 @@ t3 theme set .\homebrew-channel-teal.json
 
 Indigo water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-indigo.json
-```
-
-Or without cloning ([download homebrew-channel-indigo.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-indigo.json)):
+[Download homebrew-channel-indigo.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-indigo.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-indigo.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-indigo.json
 t3 theme set ./homebrew-channel-indigo.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-indigo.json -OutFile homebrew-channel-indigo.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-indigo.json -OutFile homebrew-channel-indigo.json
 t3 theme set .\homebrew-channel-indigo.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-indigo.json
 ```
 
 ### Purple
@@ -303,24 +331,26 @@ t3 theme set .\homebrew-channel-indigo.json
 
 Purple water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-purple.json
-```
-
-Or without cloning ([download homebrew-channel-purple.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-purple.json)):
+[Download homebrew-channel-purple.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-purple.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-purple.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-purple.json
 t3 theme set ./homebrew-channel-purple.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-purple.json -OutFile homebrew-channel-purple.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-purple.json -OutFile homebrew-channel-purple.json
 t3 theme set .\homebrew-channel-purple.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-purple.json
 ```
 
 ### Magenta
@@ -329,24 +359,26 @@ t3 theme set .\homebrew-channel-purple.json
 
 Magenta water, bubbles and accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-magenta.json
-```
-
-Or without cloning ([download homebrew-channel-magenta.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-magenta.json)):
+[Download homebrew-channel-magenta.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-magenta.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-magenta.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-magenta.json
 t3 theme set ./homebrew-channel-magenta.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-magenta.json -OutFile homebrew-channel-magenta.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-magenta.json -OutFile homebrew-channel-magenta.json
 t3 theme set .\homebrew-channel-magenta.json
+```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-magenta.json
 ```
 
 ### Grey
@@ -355,25 +387,36 @@ t3 theme set .\homebrew-channel-magenta.json
 
 Charcoal water, grey bubbles and white accents.
 
-```sh
-t3 theme set ./themes/homebrew-channel-grey.json
-```
-
-Or without cloning ([download homebrew-channel-grey.json](https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-grey.json)):
+[Download homebrew-channel-grey.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-grey.json), or install it from a terminal.
 
 macOS:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-grey.json
+curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-grey.json
 t3 theme set ./homebrew-channel-grey.json
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/themes/homebrew-channel-grey.json -OutFile homebrew-channel-grey.json
+Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-grey.json -OutFile homebrew-channel-grey.json
 t3 theme set .\homebrew-channel-grey.json
 ```
+
+From a clone of this repository:
+
+```sh
+t3 theme set ./themes/homebrew-channel-grey.json
+```
+
+## Updating
+
+T3 Code does not update themes by itself. To get the newest version of a theme,
+run its install commands again. They always download the latest release and
+replace the theme you have.
+
+See the [releases page](https://github.com/FrankieFms/homebrew-t3code/releases)
+for what changed in each version.
 
 ## Requirements
 
@@ -499,6 +542,18 @@ To add a color variation:
    ```
 
 The build script minifies the CSS inside each theme file. The files in `src/` keep their comments.
+
+### Release a new version
+
+Rebuild the themes, commit them to `main`, then push a version tag:
+
+```sh
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+`.github/workflows/release.yml` then creates a release with every theme file attached.
+The install links in this README always point to the latest release.
 
 ## Uninstall
 

@@ -1,0 +1,41 @@
+# Publishes a GitHub release when a version tag is pushed:
+#
+#   git tag v1.0.0
+#   git push origin v1.0.0
+#
+# Every theme in themes/ is attached, so the README's
+# releases/latest/download/<theme>.json links always get the newest version.
+# homebrew-channel-colors.json is left out: it is the base palette that
+# build-theme.py reads, not a theme to install.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Collect theme files
+        run: |
+          mkdir dist
+          for f in themes/*.json; do
+            case "$f" in *-colors.json) continue ;; esac
+            cp "$f" dist/
+          done
+          ls dist
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/*.json \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes
