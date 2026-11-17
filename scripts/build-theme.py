@@ -135,6 +135,7 @@ THEMES = [
         "appearance": "dark",
         "dark": DARK,
         "background": "background_wide.webp",
+        "bubbles": "default",
     },
     {
         # Backup: the navy gradient from before the background image.
@@ -143,6 +144,7 @@ THEMES = [
         "appearance": "dark",
         "dark": DARK,
         "background": None,
+        "bubbles": "default",
         "css": f".dark {{\n  --hbc-backdrop: {NAVY_BACKDROP};\n}}",
     },
     {
@@ -202,13 +204,14 @@ def minify(css: str) -> str:
 
 
 def tinted_bubbles(css: str, theme: str) -> str:
-    """Swap the three embedded bubble images for a variation's tinted copies,
-    made by make-backgrounds.py. This replaces a per-frame CSS hue-rotate
-    filter on the four full-screen bubble layers."""
+    """Swap the three embedded bubble PNGs for a theme's WebP copies, made by
+    make-backgrounds.py: tinted for a color variation, so no per-frame CSS
+    hue-rotate filter is needed, and about a third the size, which makes
+    T3 Code's per-frame restyle of the bubble layers cheaper."""
     def swap(match: re.Match) -> str:
-        data = (BACKGROUNDS / "bubbles" / f"{theme}-{match.group(1)}.png").read_bytes()
+        data = (BACKGROUNDS / "bubbles" / f"{theme}-{match.group(1)}.webp").read_bytes()
         encoded = base64.b64encode(data).decode("ascii")
-        return f'--bubble-{match.group(1)}: url("data:image/png;base64,{encoded}")'
+        return f'--bubble-{match.group(1)}: url("data:image/webp;base64,{encoded}")'
 
     css, count = re.subn(r'--bubble-(\d):\s*url\("data:image/png;base64,[A-Za-z0-9+/=]+"\)', swap, css)
     if count != 3:
