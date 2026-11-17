@@ -1,7 +1,8 @@
 /* ==========================================================
    Homebrew Channel look for T3 Code.
-   Applied after the app's styles, together with hbc-bubbles.css.
-   Uses only the stable selectors from T3 Code's theme guide.
+   Applied after the app's styles, together with hbc-bubbles-fast.css.
+   Uses the stable selectors from T3 Code's theme guide where it can. Rules
+   that need a selector outside that list say so in their comment.
    ========================================================== */
 
 :root {
@@ -49,7 +50,7 @@ body *:has([data-workspace-area="conversation"]),
   background-image: none !important;
 }
 
-/* ---------- Sidebar: frosted panel ---------- */
+/* ---------- Sidebar: see-through glass panel ---------- */
 
 /* One glass layer only: stacking it on both slots made the sidebar a flat
    slab that hid the water. The outer slot stays clear. */
