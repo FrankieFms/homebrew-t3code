@@ -63,7 +63,8 @@ t3 theme set homebrew-channel
 
 1. Add a background entry to `VARIATIONS` and a bubble entry to `BUBBLE_TINTS`
    in `scripts/make-backgrounds.py`.
-2. Add a palette and a `variation(...)` entry to `THEMES` in `scripts/build-theme.py`.
+2. Add a palette and a `variation(...)` entry to `THEMES` in `scripts/build-theme.py`,
+   and a description and preview image to `DESCRIPTIONS` in the same file.
 3. Run both scripts:
 
    ```sh

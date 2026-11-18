@@ -1,6 +1,19 @@
 {
   "version": 1,
   "name": "Homebrew Channel Grey",
+  "description": "Charcoal water, grey bubbles and white accents. A variation of the Homebrew Channel theme for T3 Code.",
+  "author": "FrankieFms",
+  "homepage": "https://github.com/FrankieFms/homebrew-t3code",
+  "license": "GPL-2.0-or-later",
+  "preview": "https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/assets/previews/homebrew-grey.png",
+  "tags": [
+    "dark",
+    "homebrew-channel",
+    "wii",
+    "animated",
+    "retro",
+    "grey"
+  ],
   "appearance": "dark",
   "canvas": "#181818",
   "accent": "#e6e6e6",

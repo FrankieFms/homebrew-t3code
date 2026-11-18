@@ -218,6 +218,54 @@ THEMES = [
 ]
 
 
+# Metadata for theme galleries and other sites that list themes. T3 Code
+# ignores these fields but keeps them, so they travel with the file.
+# "version" is not used here: T3 Code reads it as the theme format version.
+REPOSITORY = "https://github.com/FrankieFms/homebrew-t3code"
+PREVIEWS = "https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/assets/previews"
+META = {
+    "author": "FrankieFms",
+    "homepage": REPOSITORY,
+    "license": "GPL-2.0-or-later",
+}
+TAGS = ["dark", "homebrew-channel", "wii", "animated", "retro"]
+
+# Keyed by theme id without the "homebrew-channel" prefix: "" is the main theme.
+# Each value is (description, preview image name in assets/previews/).
+DESCRIPTIONS = {
+    "": ("A T3 Code theme inspired by The Homebrew Channel on the Wii: its underwater "
+         "background, rising bubbles and Wii-blue accents.", "homebrew-default"),
+    "no-background": ("A plain navy gradient in place of the underwater image. "
+                      "The bubbles stay.", "homebrew-no-bg"),
+    "pink": ("Light pink water, pink bubbles and accents.", "homebrew-pink"),
+    "red": ("Red water, red bubbles and accents.", "homebrew-red"),
+    "orange": ("Orange water, bubbles and accents.", "homebrew-orange"),
+    "gold": ("Gold water, bubbles and accents.", "homebrew-gold"),
+    "yellow": ("Lime-yellow water, bubbles and accents.", "homebrew-yellow"),
+    "green": ("Green water, bubbles and accents.", "homebrew-green"),
+    "teal": ("Teal water, bubbles and accents.", "homebrew-teal"),
+    "indigo": ("Indigo water, bubbles and accents.", "homebrew-indigo"),
+    "purple": ("Purple water, bubbles and accents.", "homebrew-purple"),
+    "magenta": ("Magenta water, bubbles and accents.", "homebrew-magenta"),
+    "grey": ("Charcoal water, grey bubbles and white accents.", "homebrew-grey"),
+}
+
+
+def metadata(theme_id: str) -> dict:
+    key = theme_id.removeprefix("homebrew-channel").removeprefix("-")
+    if key not in DESCRIPTIONS:
+        raise SystemExit(f"{theme_id}: add a description to DESCRIPTIONS.")
+    description, preview = DESCRIPTIONS[key]
+    if key:
+        description += " A variation of the Homebrew Channel theme for T3 Code."
+    return {
+        "description": description,
+        **META,
+        "preview": f"{PREVIEWS}/{preview}.png",
+        "tags": TAGS + ([key] if key and key != "no-background" else []),
+    }
+
+
 def background_css(name: str) -> str:
     """Embed a background as a data: URL, since themes cannot load files."""
     data = base64.b64encode((BACKGROUNDS / name).read_bytes()).decode("ascii")
@@ -271,6 +319,7 @@ def build(spec: dict) -> dict:
     theme = {
         "version": 1,
         "name": spec["name"],
+        **metadata(spec["id"]),
         "appearance": spec["appearance"],
         "canvas": main_palette["canvas"],
         "accent": main_palette["accent"],

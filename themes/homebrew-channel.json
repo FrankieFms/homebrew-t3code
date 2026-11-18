@@ -1,6 +1,18 @@
 {
   "version": 1,
   "name": "Homebrew Channel",
+  "description": "A T3 Code theme inspired by The Homebrew Channel on the Wii: its underwater background, rising bubbles and Wii-blue accents.",
+  "author": "FrankieFms",
+  "homepage": "https://github.com/FrankieFms/homebrew-t3code",
+  "license": "GPL-2.0-or-later",
+  "preview": "https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/assets/previews/homebrew-default.png",
+  "tags": [
+    "dark",
+    "homebrew-channel",
+    "wii",
+    "animated",
+    "retro"
+  ],
   "appearance": "dark",
   "canvas": "#0d1824",
   "accent": "#34beed",

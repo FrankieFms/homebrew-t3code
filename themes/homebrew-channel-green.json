@@ -1,6 +1,19 @@
 {
   "version": 1,
   "name": "Homebrew Channel Green",
+  "description": "Green water, bubbles and accents. A variation of the Homebrew Channel theme for T3 Code.",
+  "author": "FrankieFms",
+  "homepage": "https://github.com/FrankieFms/homebrew-t3code",
+  "license": "GPL-2.0-or-later",
+  "preview": "https://raw.githubusercontent.com/FrankieFms/homebrew-t3code/main/assets/previews/homebrew-green.png",
+  "tags": [
+    "dark",
+    "homebrew-channel",
+    "wii",
+    "animated",
+    "retro",
+    "green"
+  ],
   "appearance": "dark",
   "canvas": "#0d240d",
   "accent": "#2ed82b",
