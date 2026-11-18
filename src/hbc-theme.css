@@ -65,6 +65,14 @@ body *:has([data-workspace-area="conversation"]),
      power cost in Task Manager. */
 }
 
+/* In a narrow window the sidebar opens as an overlay over the chat. That
+   overlay has no sidebar-inner, so the rule above left it fully clear and
+   the chat text showed through the thread list. It gets a solid backing
+   with the glass tint on top. */
+[data-slot="sidebar"]:not(:has([data-slot="sidebar-inner"])) {
+  background: linear-gradient(var(--hbc-glass-strong), var(--hbc-glass-strong)), #000 !important;
+}
+
 /* The resize edge draws a 2px sidebarBorder line on hover. On the glass that
    reads as a dark line flickering over the light edge, so it uses the accent.
    sidebar-rail is not on T3 Code's stable list. */
