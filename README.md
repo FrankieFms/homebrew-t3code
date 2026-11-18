@@ -10,22 +10,12 @@ selected thread uses the steel-blue focus bar from the original menu.
 
 ## Quick start
 
-Install the main theme. macOS:
-
-```sh
-curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json
-t3 theme set ./homebrew-channel.json
-```
-
-Windows (PowerShell):
-
-```powershell
-Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json -OutFile homebrew-channel.json
-t3 theme set .\homebrew-channel.json
-```
+1. Download [homebrew-channel.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json).
+2. In T3 Code, open **Settings** and go to **Appearance**.
+3. Import a theme and pick the file you downloaded.
 
 All themes are dark only, so set T3 Code to dark mode.
-See [Install](#install) for more detail.
+Every other theme installs the same way. Pick one from the [gallery](#gallery).
 
 ## Gallery
 
@@ -40,9 +30,8 @@ See [Install](#install) for more detail.
 ## Themes
 
 Every theme is attached to the [latest release](https://github.com/FrankieFms/homebrew-t3code/releases/latest).
-Each theme below has a download link and install commands for macOS and Windows.
-Keep the file name: T3 Code uses it as the theme id.
-The commands work in Terminal on macOS and in PowerShell on Windows.
+Download a theme, then import it in T3 Code under **Settings** > **Appearance**.
+Each theme also has terminal commands, if you prefer the `t3` CLI.
 Every color variation has its own recolored water, pre-tinted bubbles and matching accent.
 
 ### Homebrew Channel
@@ -51,7 +40,10 @@ Every color variation has its own recolored water, pre-tinted bubbles and matchi
 
 The main theme: the Homebrew Channel underwater background, bubbles and Wii-blue accents.
 
-[Download homebrew-channel.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json), or install it from a terminal.
+[Download homebrew-channel.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -73,13 +65,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel.json
 ```
 
+</details>
+
 ### No Background
 
 ![No Background theme preview](assets/previews/homebrew-no-bg.png)
 
 The main theme with a plain navy gradient in place of the underwater image. The bubbles stay.
 
-[Download homebrew-channel-no-bg.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-no-bg.json), or install it from a terminal.
+[Download homebrew-channel-no-bg.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-no-bg.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -101,13 +98,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-no-bg.json
 ```
 
+</details>
+
 ### Pink
 
 ![Pink theme preview](assets/previews/homebrew-pink.png)
 
 Light pink water, pink bubbles and accents.
 
-[Download homebrew-channel-pink.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-pink.json), or install it from a terminal.
+[Download homebrew-channel-pink.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-pink.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -129,13 +131,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-pink.json
 ```
 
+</details>
+
 ### Red
 
 ![Red theme preview](assets/previews/homebrew-red.png)
 
 Red water, red bubbles and accents.
 
-[Download homebrew-channel-red.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-red.json), or install it from a terminal.
+[Download homebrew-channel-red.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-red.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -157,13 +164,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-red.json
 ```
 
+</details>
+
 ### Orange
 
 ![Orange theme preview](assets/previews/homebrew-orange.png)
 
 Orange water, bubbles and accents.
 
-[Download homebrew-channel-orange.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-orange.json), or install it from a terminal.
+[Download homebrew-channel-orange.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-orange.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -185,13 +197,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-orange.json
 ```
 
+</details>
+
 ### Gold
 
 ![Gold theme preview](assets/previews/homebrew-gold.png)
 
 Gold water, bubbles and accents.
 
-[Download homebrew-channel-gold.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-gold.json), or install it from a terminal.
+[Download homebrew-channel-gold.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-gold.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -213,13 +230,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-gold.json
 ```
 
+</details>
+
 ### Yellow
 
 ![Yellow theme preview](assets/previews/homebrew-yellow.png)
 
 Lime-yellow water, bubbles and accents.
 
-[Download homebrew-channel-yellow.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-yellow.json), or install it from a terminal.
+[Download homebrew-channel-yellow.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-yellow.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -241,13 +263,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-yellow.json
 ```
 
+</details>
+
 ### Green
 
 ![Green theme preview](assets/previews/homebrew-green.png)
 
 Green water, bubbles and accents.
 
-[Download homebrew-channel-green.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-green.json), or install it from a terminal.
+[Download homebrew-channel-green.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-green.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -269,13 +296,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-green.json
 ```
 
+</details>
+
 ### Teal
 
 ![Teal theme preview](assets/previews/homebrew-teal.png)
 
 Teal water, bubbles and accents.
 
-[Download homebrew-channel-teal.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-teal.json), or install it from a terminal.
+[Download homebrew-channel-teal.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-teal.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -297,13 +329,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-teal.json
 ```
 
+</details>
+
 ### Indigo
 
 ![Indigo theme preview](assets/previews/homebrew-indigo.png)
 
 Indigo water, bubbles and accents.
 
-[Download homebrew-channel-indigo.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-indigo.json), or install it from a terminal.
+[Download homebrew-channel-indigo.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-indigo.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -325,13 +362,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-indigo.json
 ```
 
+</details>
+
 ### Purple
 
 ![Purple theme preview](assets/previews/homebrew-purple.png)
 
 Purple water, bubbles and accents.
 
-[Download homebrew-channel-purple.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-purple.json), or install it from a terminal.
+[Download homebrew-channel-purple.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-purple.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -353,13 +395,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-purple.json
 ```
 
+</details>
+
 ### Magenta
 
 ![Magenta theme preview](assets/previews/homebrew-magenta.png)
 
 Magenta water, bubbles and accents.
 
-[Download homebrew-channel-magenta.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-magenta.json), or install it from a terminal.
+[Download homebrew-channel-magenta.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-magenta.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -381,13 +428,18 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-magenta.json
 ```
 
+</details>
+
 ### Grey
 
 ![Grey theme preview](assets/previews/homebrew-grey.png)
 
 Charcoal water, grey bubbles and white accents.
 
-[Download homebrew-channel-grey.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-grey.json), or install it from a terminal.
+[Download homebrew-channel-grey.json](https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel-grey.json), then import it in **Settings** > **Appearance**.
+
+<details>
+<summary>Install from a terminal</summary>
 
 macOS:
 
@@ -409,11 +461,13 @@ From a clone of this repository:
 t3 theme set ./themes/homebrew-channel-grey.json
 ```
 
+</details>
+
 ## Updating
 
 T3 Code does not update themes by itself. To get the newest version of a theme,
-run its install commands again. They always download the latest release and
-replace the theme you have.
+download it again and import it in **Settings** > **Appearance**, or run its
+terminal commands again. The download links always point to the latest release.
 
 See the [releases page](https://github.com/FrankieFms/homebrew-t3code/releases)
 for what changed in each version.
@@ -421,7 +475,7 @@ for what changed in each version.
 ## Requirements
 
 - T3 Code stable with theme support.
-- The `t3` CLI. T3 Code installs it at `~/.t3/bin/t3` on macOS and
+- For terminal installs only: the `t3` CLI. T3 Code installs it at `~/.t3/bin/t3` on macOS and
   `%USERPROFILE%\.t3\bin\t3.cmd` on Windows. If your terminal cannot find `t3`,
   type that full path in place of `t3`.
 
@@ -434,6 +488,14 @@ t3 theme --help
 If the command shows `set`, `clear` and `show`, your build supports themes.
 
 ## Install
+
+The simplest way is from the app:
+
+1. Download a theme file from the [latest release](https://github.com/FrankieFms/homebrew-t3code/releases/latest).
+2. In T3 Code, open **Settings** and go to **Appearance**.
+3. Import a theme and pick the file.
+
+### Install from a terminal
 
 1. Clone or download this repository.
 2. Open a terminal in the repository folder.
@@ -462,7 +524,7 @@ you can switch between published themes by id:
 t3 theme set homebrew-channel-pink
 ```
 
-### Install every theme at once
+#### Install every theme at once
 
 macOS:
 
@@ -481,7 +543,7 @@ Get-ChildItem themes\*.json -Exclude *-colors.json | ForEach-Object { t3 theme s
 t3 theme set homebrew-channel
 ```
 
-### Install by copying the file
+#### Install by copying the file
 
 You can also copy a theme file into that `themes` folder yourself.
 T3 Code watches that folder and lists the theme. Then pick it in T3 Code,
