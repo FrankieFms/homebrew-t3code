@@ -48,7 +48,7 @@ def recolor(image: Image.Image, hue: float, saturation: float, value: float) -> 
 # The bubble art (hue 201, close to the water) is tinted per color variation
 # here, so themes need no per-frame CSS filter on the four full-screen bubble
 # layers. Keys are theme ids without the "homebrew-channel-" prefix;
-# "default" is the untinted art for the main and no-bg themes.
+# "default" is the untinted art for the main and No Background themes.
 #
 # The bubbles are saved as WebP, about a third the size of the PNGs. T3 Code
 # restyles the four bubble layers on every frame it draws, and each restyle

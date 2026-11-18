@@ -139,7 +139,7 @@ THEMES = [
     },
     {
         # Backup: the navy gradient from before the background image.
-        "id": "homebrew-channel-no-bg",
+        "id": "homebrew-channel-no-background",
         "name": "Homebrew Channel (No Background)",
         "appearance": "dark",
         "dark": DARK,
