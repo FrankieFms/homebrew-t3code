@@ -35,28 +35,27 @@ Each color has its own recolored water, tinted bubbles and matching accent.
 <details>
 <summary>Install from a terminal</summary>
 
-Replace `homebrew-channel` with the id of the theme you want: `homebrew-channel`, `homebrew-channel-no-bg`, `homebrew-channel-pink`, `homebrew-channel-red`, `homebrew-channel-orange`, `homebrew-channel-gold`, `homebrew-channel-yellow`, `homebrew-channel-green`, `homebrew-channel-teal`, `homebrew-channel-indigo`, `homebrew-channel-purple`, `homebrew-channel-magenta`, `homebrew-channel-grey`.
-Keep the file name, because T3 Code uses it as the theme id.
+Set `theme` to the name of the file you want, without `.json`, such as `homebrew-channel-pink`.
 
 macOS:
 
 ```sh
-curl -fsSLO https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json
-t3 theme set ./homebrew-channel.json
+theme=homebrew-channel
+base=https://github.com/FrankieFms/homebrew-t3code/releases/latest/download
+curl -fsSLO "$base/$theme.json"
+t3 theme set "./$theme.json"
 ```
 
 Windows (PowerShell):
 
 ```powershell
-Invoke-WebRequest https://github.com/FrankieFms/homebrew-t3code/releases/latest/download/homebrew-channel.json -OutFile homebrew-channel.json
-t3 theme set .\homebrew-channel.json
+$theme = "homebrew-channel"
+$base = "https://github.com/FrankieFms/homebrew-t3code/releases/latest/download"
+Invoke-WebRequest "$base/$theme.json" -OutFile "$theme.json"
+t3 theme set ".\$theme.json"
 ```
 
-If your terminal cannot find `t3`, use its full path: `~/.t3/bin/t3` on macOS,
-`%USERPROFILE%\.t3\bin\t3.cmd` on Windows.
-
-To install every theme at once from a clone of this repository, see
-[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md#install-every-theme).
+Can't find `t3`? Use `~/.t3/bin/t3` on macOS or `%USERPROFILE%\.t3\bin\t3.cmd` on Windows.
 
 </details>
 
