@@ -30,7 +30,18 @@ Open an issue with the bug report form. Include:
 
 ## Making a change
 
-1. Fork the repository and create a branch from `main`.
+1. Fork the repository and create a branch from `main` for each change. Keep
+   one change per branch and pull request, such as one new color or one fix.
+   Name the branch after it:
+
+   ```sh
+   git switch -c color/mint
+   git switch -c fix/sidebar-overlay
+   ```
+
+   Every pull request rebuilds `themes/*.json`, so two open pull requests often
+   conflict there. If yours does, update your branch from `main`, run the build
+   again and commit the result. Do not merge the JSON by hand.
 2. Edit the files in `src/` or `scripts/`. Do not edit `themes/*.json` by hand,
    except `homebrew-channel-colors.json`.
 3. Rebuild the themes:
