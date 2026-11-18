@@ -4,7 +4,7 @@
 [![Downloads](https://img.shields.io/github/downloads/FrankieFms/homebrew-t3code/total?label=downloads)](https://github.com/FrankieFms/homebrew-t3code/releases)
 [![Stars](https://img.shields.io/github/stars/FrankieFms/homebrew-t3code?style=flat)](https://github.com/FrankieFms/homebrew-t3code/stargazers)
 
-A T3 Code theme inspired by the channel menu of The Homebrew Channel on the Nintendo Wii.
+An animated T3 Code theme inspired by the channel menu of The Homebrew Channel on the Nintendo Wii.
 Bubbles rise behind the chat, the sidebar and chat box sit on dark HBC-style bars, and the
 selected thread uses the steel-blue focus bar from the original menu.
 
