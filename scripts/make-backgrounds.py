@@ -1,9 +1,26 @@
-"""Make the compressed backgrounds that build-theme.py embeds.
+"""Make the recolored backgrounds and tinted bubbles that build-theme.py embeds.
 
-Needs Pillow (pip install pillow). Run it only when the source image or a
-color variation changes; the WebP files it writes are committed.
+What it does
+    - Recolors the Homebrew Channel water (assets/source/background_wide.png)
+      for each entry in VARIATIONS and saves it as WebP in assets/generated/.
+    - Tints the three bubble images (assets/source/bubbles/bubble1..3.png)
+      for each entry in BUBBLE_TINTS and saves them as
+      assets/generated/bubbles/<theme>-<n>.webp.
+    The source art comes from The Homebrew Channel (fail0verflow/hbc,
+    GPL-2.0-or-later). Never edit assets/source/; change the settings here.
 
+When to run it
+    Only when the source art, VARIATIONS or BUBBLE_TINTS change. Its output
+    is committed, so a normal theme build does not need it. Run
+    build-theme.py afterwards so the themes pick up the new images.
+
+    pip install pillow
     python scripts/make-backgrounds.py
+
+Quality settings
+    Backgrounds use QUALITY (85). Bubbles use BUBBLE_QUALITY (90): lower
+    values band around the bubble edges. Keep bubbles as WebP, not PNG,
+    for the performance reason given above BUBBLE_TINTS.
 """
 
 from pathlib import Path

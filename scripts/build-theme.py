@@ -1,11 +1,41 @@
 """Build the Homebrew Channel themes for T3 Code.
 
-Each entry in THEMES becomes one theme file in themes/. A theme merges its
-palettes, its background image, hbc-bubbles.css and hbc-theme.css. Run it
-after editing a CSS file or a palette, then apply a theme:
+What it does
+    Each entry in THEMES becomes one file, themes/<id>.json, in the format
+    `t3 theme set` and T3 Code's Settings > Appearance import read. For each
+    theme it joins, in this order:
+      1. the background image as a data: URL (--hbc-background-image),
+      2. the bubble CSS (CSS_FILES[0]), with its three bubble images swapped
+         for the theme's WebP copies,
+      3. src/hbc-theme.css, the layout styling shared by every theme,
+      4. the theme's own "css" (accent, glass tint and HBC art stops).
+    The result is minified and checked against T3 Code's 50,000-character
+    limit. The color palette goes in the theme's "colors".
+
+Inputs
+    themes/homebrew-channel-colors.json   base palette, edited by hand
+    src/*.css                             the CSS, with comments
+    assets/generated/                     WebP backgrounds and bubbles,
+                                          made by make-backgrounds.py
+
+Outputs
+    themes/<id>.json for every entry in THEMES. Never edit these by hand:
+    the next build overwrites them. Commit them with the source change.
+
+Run it after editing a CSS file, a palette or THEMES, then apply a theme:
 
     python scripts/build-theme.py
     t3 theme set ./themes/homebrew-channel.json
+
+Rules that keep the themes working
+    - Dark only: every theme sets "appearance": "dark". Do not add light
+      palettes or light-mode CSS.
+    - Images must be embedded: theme CSS cannot load files, so url() only
+      takes data: URLs. That is why the size limit matters.
+    - Changing a theme id renames its file. Users who installed the old id
+      keep a stale copy, so mention any rename in the release notes.
+
+To add a color variation, see docs/DEVELOPMENT.md.
 """
 
 import base64
@@ -22,7 +52,7 @@ CSS_FILES = [ROOT / "src" / "hbc-bubbles-fast.css", ROOT / "src" / "hbc-theme.cs
 BACKGROUNDS = ROOT / "assets" / "generated"
 CSS_MAX_LENGTH = 50_000
 
-# Dark: the same palette as the colors-only theme.
+# The base dark palette. Every color variation is tinted from it with tint().
 DARK = json.loads((OUTPUT_DIR / "homebrew-channel-colors.json").read_text("utf-8"))["colors"]
 
 
@@ -64,6 +94,8 @@ def accent_roles(accent: str, foreground: str, hover: str, soft: str) -> dict:
     }
 
 
+# Each variation's palette: the base palette moved to one hue, plus a
+# hand-picked accent family that stays readable on that hue.
 PINK = {**tint(DARK, 330, 0.8), **accent_roles("#ff9ecf", "#2e0a1c", "#f387bd", "#ffb8dc")}
 RED = {**tint(DARK, 356), **accent_roles("#ff4d5a", "#2a0508", "#e83f4c", "#ff7a84")}
 
@@ -147,6 +179,8 @@ THEMES = [
         "bubbles": "default",
         "css": f".dark {{\n  --hbc-backdrop: {NAVY_BACKDROP};\n}}",
     },
+    # Pink and red predate variation() and keep hand-picked glass colors,
+    # which read better than the tinted ones. Newer colors use variation().
     {
         "id": "homebrew-channel-pink",
         "name": "Homebrew Channel Pink",
@@ -215,7 +249,7 @@ def tinted_bubbles(css: str, theme: str) -> str:
 
     css, count = re.subn(r'--bubble-(\d):\s*url\("data:image/png;base64,[A-Za-z0-9+/=]+"\)', swap, css)
     if count != 3:
-        raise SystemExit(f"{theme}: expected 3 bubble images in hbc-bubbles.css, found {count}.")
+        raise SystemExit(f"{theme}: expected 3 bubble images in {CSS_FILES[0].name}, found {count}.")
     return css
 
 
