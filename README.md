@@ -10,7 +10,13 @@ selected thread uses the steel-blue focus bar from the original menu.
 
 ![Homebrew Channel theme preview](assets/previews/homebrew-default.png)
 
-[Watch the bubbles move](assets/previews/homebrew-default-video.mp4).
+[Watch the bubbles move](https://github.com/user-attachments/assets/86e67ddb-d4e9-418d-bb89-1a16cfbeafbb).
+
+
+
+
+
+
 
 ## Install
 
