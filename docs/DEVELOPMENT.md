@@ -87,8 +87,8 @@ window every frame. To switch back to it, see the comment at the top of
 Rebuild the themes, commit them to `main`, then push a version tag:
 
 ```sh
-git tag v1.0.2
-git push origin v1.0.2
+git tag v1.2.3   # the next version number
+git push origin v1.2.3
 ```
 
 `.github/workflows/release.yml` then creates a release with every theme file attached.
