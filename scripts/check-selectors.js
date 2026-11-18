@@ -58,4 +58,18 @@
       ? `${missing.length} not found. Check that each one's "Needs" state was on screen, then run again.`
       : "All found.",
   );
+
+  // Put a plain-text copy on the clipboard, ready to paste into a chat.
+  // copy() is a DevTools console helper, so it only exists when the script
+  // is pasted into the Console.
+  const text = [
+    `Homebrew Channel selector check. Active theme: ${themeId}`,
+    ...rows.map((row) => `${row.Result} | ${row.Kind} | ${row.Element} (${row.Count}) | needs: ${row.Needs}`),
+  ].join("\n");
+  if (typeof copy === "function") {
+    copy(text);
+    console.log("Results copied to the clipboard.");
+  } else {
+    console.log(text);
+  }
 })();
