@@ -6,6 +6,13 @@
    which the GPU moves without redrawing. The original animated
    background-position, which redrew four full-screen layers every frame.
    To go back, point CSS_FILES in scripts/build-theme.py at hbc-bubbles.css.
+
+   Based on channel/channelapp/source/bubbles.c and the bubble images
+   from The Homebrew Channel, https://github.com/fail0verflow/hbc,
+   by Team Twiizers (fail0verflow), GPL-2.0-or-later.
+   Changed by FrankieFms in 2026: translated from C to CSS keyframes,
+   then changed to sway each layer with translate.
+   This file is also GPL-2.0-or-later. See LICENSE.
    ========================================================== */
 
 :root {

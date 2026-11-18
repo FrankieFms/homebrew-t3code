@@ -1,6 +1,12 @@
 /* ==========================================================
    Homebrew Channel bubbles: pure CSS port of bubbles.c
    No markup needed. Uses html/body ::before and ::after.
+
+   Based on channel/channelapp/source/bubbles.c and the bubble images
+   from The Homebrew Channel, https://github.com/fail0verflow/hbc,
+   by Team Twiizers (fail0verflow), GPL-2.0-or-later.
+   Changed by FrankieFms in 2026: translated from C to CSS keyframes.
+   This file is also GPL-2.0-or-later. See LICENSE.
    ========================================================== */
 
 :root {

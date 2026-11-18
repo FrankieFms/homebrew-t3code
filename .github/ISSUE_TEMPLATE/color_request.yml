@@ -1,0 +1,16 @@
+name: Color request
+description: Suggest a new color variation.
+labels: [enhancement]
+body:
+  - type: input
+    id: color
+    attributes:
+      label: Color
+      description: A name and a hex value, such as "Mint #3ee8b0".
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Anything else?
+      description: Reference images or ideas for the water and bubbles.

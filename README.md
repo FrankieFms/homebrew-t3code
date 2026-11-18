@@ -80,7 +80,25 @@ Pick another theme in **Settings** > **Appearance**, or run `t3 theme clear`.
 Building the themes, adding a color, performance notes and releases are in
 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
-## Credits
+Bug reports, fixes and color ideas are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The Homebrew Channel is by Team Twiizers. This theme is a fan tribute and is not
-affiliated with Team Twiizers, Nintendo or T3 Code.
+## Credits and license
+
+The Homebrew Channel is by Team Twiizers, now [fail0verflow](https://github.com/fail0verflow).
+This theme is a fan tribute and is not affiliated with fail0verflow, Nintendo or T3 Code.
+
+The bubble animation is a CSS translation of `bubbles.c`, and the background and bubble
+images come from The Homebrew Channel's source code at
+[fail0verflow/hbc](https://github.com/fail0verflow/hbc). Both are released under the GNU
+General Public License, version 2 or later. They have been changed for this theme: the
+images are recolored and converted to WebP, and the animation is adapted to run as CSS.
+
+Because it builds on that code, this theme is also released under the
+[GNU General Public License, version 2 or later](LICENSE).
+
+### For fail0verflow
+
+If you are part of fail0verflow, or otherwise hold rights in The Homebrew Channel, and have
+any concerns about this theme, open an issue or email
+[contact@frankiefms.com](mailto:contact@frankiefms.com). That includes a missing or wrong credit, a change you would like made, or a
+request to take the theme down. Any request will be honored.
