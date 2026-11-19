@@ -26,6 +26,18 @@ selected thread uses the steel-blue focus bar from the original menu.
 
 All themes are dark only, so set T3 Code to dark mode.
 
+### Claude app
+
+The same look, with every color, also works in Claude Code sessions in the
+Claude desktop and mobile apps. In a Claude Code terminal session, type:
+
+```
+/plugin install homebrew-channel --marketplace wypiek/homebrew-claude
+```
+
+Then switch colors with `/homebrew-color pink` (or any color below). See
+[claude-app/README.md](claude-app/README.md).
+
 ## Themes
 
 Each color has its own recolored water, tinted bubbles and matching accent.
